@@ -1,6 +1,12 @@
 class DestinationsController < ApplicationController
   def index
     @destinations = Destination.all
+    @markers = @destinations.geocoded.map do |destination|
+      {
+        lat: destination.latitude,
+        lng: destination.longitude
+      }
+    end
   end
 
   def show

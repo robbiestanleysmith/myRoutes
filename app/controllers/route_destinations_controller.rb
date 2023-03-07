@@ -1,6 +1,12 @@
 class RouteDestinationsController < ApplicationController
   def index
     @route_destinations = RouteDestination.all
+    @markers = @route_destinations.geocoded.map do |route_destination|
+      {
+        lat: route_destination.latitude,
+        lng: route_destination.longitude
+      }
+    end
   end
 
   def show
