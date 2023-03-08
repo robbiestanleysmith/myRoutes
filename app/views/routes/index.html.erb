@@ -1,5 +1,28 @@
+
+<header> Welcome back!</header>
+<h1>Here are your most recent routes...</h1>
+
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['pk.eyJ1IjoiamZtaXRjaC0yMTA2IiwiYSI6ImNsZHp5b2NiNzE1ajIzcG52aWl4cGMyc2wifQ.zKb32JnBQoHeYonDA8208A'] %>">
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<div class="card-route clickable">
+  <%= cl_image_tag route.photos.first.key, height: 300, width: 400, crop: :fill %>
+
+  <div class="card-route-infos">
+    <div>
+      <h2><%= route.title %></h2>
+      <p><%#= route.route_destination.count %></p>
+      <p><%#= route.stops | route.distance | route.time %></p>
+
+      <%#= MAKE SURE TO ADD EDIT ROUTE/OPEN IN MAPS BUTTONS %>
+
+    </div>
+    <h2 class="card-route-title"><%= route.title %></h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-route-user avatar-bordered" />
+    <%= cl_image_tag route.photo.key, class: "card-route-user" %>
+
+  </div>
 </div>
