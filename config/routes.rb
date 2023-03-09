@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get '/routes', to: 'routes#index', as: :myroutes
+  get '/maptest', to: 'pages#directionstestpage', as: :directionstestpage
 
   # Defines the root path route ("/")
   # root "articles#index"

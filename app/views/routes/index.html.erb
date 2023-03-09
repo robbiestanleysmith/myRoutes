@@ -10,23 +10,21 @@
 </div>
 
 <div class="card-route clickable">
-  <%= cl_image_tag route.photos.first.key, height: 300, width: 400, crop: :fill %>
+  <%= cl_image_tag @routes.first.photo.key, height: 300, width: 400, crop: :fill %>
 
   <div class="card-route-infos">
     <div>
-      <h2><%= route.title %></h2>
+      <h2><%= @routes.first.title %></h2>
       <p><%#= route.route_destination.count %></p>
       <p><%#= route.stops | route.distance | route.time %></p>
 
       <%#= MAKE SURE TO ADD EDIT ROUTE/OPEN IN MAPS BUTTONS %>
 
     </div>
-    <h2 class="card-route-title"><%= route.title %></h2>
+    <h2 class="card-route-title"><%= @routes.first.title %></h2>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-route-user avatar-bordered" />
-    <%= cl_image_tag route.photo.key, class: "card-route-user" %>
+    <%= cl_image_tag @routes.first.photo.key, class: "card-route-user" %>
 
   </div>
 
 </div>
-
-
