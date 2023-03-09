@@ -49,7 +49,7 @@
           </div>
           <div class="destination-text">
             <%= destination.address %>
-            <%= link_to "Delete", route_destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+            <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
@@ -58,11 +58,9 @@
         <% end %>
         <% end %>
       </div>
-
-
     </div>
-    <div class="route-map border">
-      Map
+    <div class="destination-map border">
+      <%= render "shared/map" %>
     </div>
   </div>
 
