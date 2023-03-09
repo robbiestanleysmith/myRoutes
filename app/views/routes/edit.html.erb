@@ -2,26 +2,25 @@
   <div class="page-actions">
     <div class="page-actions-back">
     </div>
-    <div class="page-actions-sharing">
-      <i class="fa-regular fa-trash-can px-3"></i>
+    <div class="page-actions-sharing my-2">
       <i class="fa-solid fa-arrow-up-from-bracket px-3"></i>
     </div>
   </div>
 
-  <div class="route-title">
+  <div class="route-title my-1">
     <h1><strong><%= @route.title %></strong></h1>
   </div>
 
-  <div class="destinations-text">
-    <h1>Add destinations to your route</h1>
+  <div class="route-actions">
+    <%= link_to '<i class="fa-regular fa-trash-can"></i> Delete route'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
+    <%= link_to '<i class="fa-solid fa-floppy-disk"></i> Save route'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
   </div>
 
-  <div class="route-content my-3">
+  <div class="route-content my-1">
 
     <div class="route-destinations">
-
-      <div class="route-destinations-actions">
-        <span class="m-3">Cancel</span>
+      <div class="route-destinations-actions m-3">
+        <h2>Add destinations to your route</h2>
       </div>
 
       <div class="route-destinations-form mx-3">
@@ -49,7 +48,7 @@
           </div>
           <div class="destination-text">
             <%= destination.address %>
-            <%= link_to "Delete", route_destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+            <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
@@ -58,11 +57,9 @@
         <% end %>
         <% end %>
       </div>
-
-
     </div>
-    <div class="route-map border">
-      Map
+    <div class="destination-map p-1">
+      <%= render "shared/map" %>
     </div>
   </div>
 

@@ -37,6 +37,7 @@ class DestinationsController < ApplicationController
   def destroy
     @destination = Destination.find(params[:id])
     @destination.destroy
+    redirect_back(fallback_location: routes_path)
   end
 
   private

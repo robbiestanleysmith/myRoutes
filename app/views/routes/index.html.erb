@@ -6,6 +6,14 @@
 <header> Here are your most recent routes...</header>
 
 
+<div class="card-route clickable">
+  <%= cl_image_tag @routes.first.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <div class="card-route-infos">
+    <div>
+      <h2><%= @routes.first.title %></h2>
+      <p><%#= route.route_destination.count %></p>
+      <p><%#= route.stops | route.distance | route.time %></p>
 
 <% @routes.each do |route| %>
   <div class="card-route">
@@ -27,8 +35,11 @@
       <h2 class="card-route-title"></h2>
 
     </div>
+      <h2 class="card-route-title"><%= @routes.first.title %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-route-user avatar-bordered" />
+      <%= cl_image_tag @routes.first.photo.key, class: "card-route-user" %>
 
-  </div>
+    </div>
 <% end %>
 
 <div style="width: 100%; height: 600px;"
@@ -37,7 +48,6 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
 </div>
-
 
 <div class="footer">
   <div class="footer-links">

@@ -12,6 +12,13 @@
   }
 }
 
+.route-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+}
+
 .route-title {
   h1 {
     font-size: 28px;
@@ -28,8 +35,8 @@
   }
 }
 
-.destinations-text h1 {
-  font-size: 28px;
+.route-destinations h2 {
+  font-size: 24px;
 }
 .route-content {
   display: flex;
@@ -40,6 +47,7 @@
   .route-destinations {
     width: 50%;
     margin-top: 15px;
+    margin-right: 5px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -59,8 +67,13 @@
       }
     }
   }
-  .route-map {
+  .destination-map {
     width: 50%;
+    margin-left: 5px;
+    margin-top: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
   }
 }
 
