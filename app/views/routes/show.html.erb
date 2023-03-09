@@ -1,0 +1,11 @@
+<h1><%= @route.title %></h1>
+
+<%= cl_image_tag @route.photo.key %>
+
+<ul><% @route.destinations.each do |r| %>
+<li><%= r.title %></li>
+<% end %>
+</ul>
+
+<p>Distance: <%= @route.distance %>km</p>
+<p>Time: <%= @route.time %>minutes</p>
