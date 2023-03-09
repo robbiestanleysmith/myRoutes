@@ -31,10 +31,11 @@ class RouteDestinationsController < ApplicationController
     @route_destination.update(route_destination_params)
   end
 
-  def destroy
-    @route_destination = RouteDestination.find(params[:id])
-    @route_destination.destroy
-  end
+  # def destroy
+  #   raise
+  #   @route_destination = RouteDestination.find(params[:id])
+  #   @route_destination.destroy
+  # end
 
   private
 
