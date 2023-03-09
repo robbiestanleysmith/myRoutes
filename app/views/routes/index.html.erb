@@ -7,7 +7,7 @@
 
 
 <% @routes.each do |route| %>
-  <div class="card-product">
+  <div class="card-route">
     <%= cl_image_tag route.photo.key, height: 139, width: 139, top: 440, left: 259, crop: :fill %>
 
     <button type= "button-outline-primary">Open in Google Maps</button>
@@ -18,7 +18,7 @@
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678367643/markericon_yll81j.png", :style=> "width: 20px; height: 25px; border-radius: 10px; horizontal-align: right;" %>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678367643/manicon_oaiatm.png", :style=> "width: 20px; height: 25px; border-radius: 10px; horizontal-align: right;" %>
 
-    <div class="card-product-infos">
+    <div class="card-route-infos">
       <div>
         <h2><%= route.title %></h2>
         <p><%#= route.route_destination.count %></p>
