@@ -1,14 +1,23 @@
-<h1>Create a new route</h1>
-<h2>Search for destinations and add them to the route</h2>
+<div class="container">
+  <div class="page-actions">
+    <div class="page-actions-back">
+    </div>
+    <div class="page-actions-sharing my-2">
+      <i class="fa-solid fa-arrow-up-from-bracket px-3"></i>
+    </div>
+  </div>
 
-
-
-<%#= f.input :address, input_html: {data: {}, class: "d-none"} %>
-
-<%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-  <%= f.input :address,
-  input_html: {data: {address_autocomplete_target: "address"}},
-  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-%>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
+  <div class="route-title">
+    <h1>Give your route a title</h1>
+    <%= simple_form_for @route, html: { class: 'form-inline w-100 route-title my-3' } do |f| %>
+    <div class="route-title-input">
+      <div class="title-text">
+        <%= f.input :title, placeholder: "E.g. London visit, day I", label: false %>
+      </div>
+      <div class="title-submit mx-3">
+        <%= f.submit 'Save', class: "btn btn-primary"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

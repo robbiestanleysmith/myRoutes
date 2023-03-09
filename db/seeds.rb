@@ -36,6 +36,7 @@ user1.photo.attach(io: avatar1, filename: "av1.jpg", content_type: "image/png")
 
 puts "Seeding routes and destinations..."
 
+
 route1 = Route.create!(title: "London Thames walking tour", user: user1, distance: "", time: "")
 routepic1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/london_zas6np.jpg")
 route1.photo.attach(io: routepic1, filename: "rp1.jpg", content_type: "image/jpg")
@@ -80,6 +81,7 @@ dest8 = Destination.create!(latitude: 38.710648, longitude: -9.143312, title: "P
 RouteDestination.create!(route: route2, destination: dest8)
 dest9 = Destination.create!(latitude: 38.713909, longitude: -9.133476, title: "Castelo de São Jorge", user: user1)
 RouteDestination.create!(route: route2, destination: dest9)
+
 
 
 

@@ -20,7 +20,25 @@
 
     <div class="route-destinations">
       <div class="route-destinations-actions m-3">
-        <h2>Here is your route</h2>
+        <h2>Add destinations to your route</h2>
+      </div>
+
+      <div class="route-destinations-form mx-3">
+        <%= simple_form_for [@route, @destination], html: { class: 'form-inline' } do |f| %>
+
+          <div class="form-whole">
+            <div class="form-left">
+              <%= f.input :address,
+                input_html: {data: {address_autocomplete_target: "address"}},
+                label: false,
+                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                %>
+            </div>
+            <div class="form-right">
+              <%= f.submit "Add", class: "btn btn-outline-primary mx-2" %>
+            </div>
+          </div>
+        <% end %>
       </div>
 
       <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">

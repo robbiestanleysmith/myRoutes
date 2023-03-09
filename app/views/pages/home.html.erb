@@ -1,23 +1,46 @@
- <div class="landingpage-container">
+<div class="landingpage-container">
 
-<div class="banner">
-  <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
-  <div class="banner-content">
-    <h1 style="size=140"> myRoutes </h1>
+
+  <div class="animation">
+
+    <div class="banner" style="background-color: black">
+      <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
+
+      <div class="banner-content">
+        <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", loop: true, autoplay: "autoplay", muted: true, class: "home-animation" %>
+        <h1 id="home-title" > myRoutes </h1>
+      </div>
+    </div>
   </div>
 </div>
 
+<div class="card-landingpage clickable">
+  <img src= "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678374143/couchguy_jgrect.jpg">
+  <div class="card-landingpage-infos">
+      <div>
+        <h2> Step 1 </h2>
+            <em> First, download our app!</em>
 
-<h2>Pages#home</h2>
-
-<ul data-controller="sortable" data-sortable-target="results">
-  <li>First</li>
-  <li>Second</li>
-  <li>Third</li>
-  <li>Fourth</li>
-</ul>
-
-
-
+      </div>
+    </div>
 </div>
 
+<div class="card-landingpage clickable">
+  <img src= "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif">
+  <div class="card-landingpage-infos">
+      <div>
+        <h2> Step 2</h2>
+          <em> Second, place markers on your map to log the places you would like to visit</em>
+      </div>
+  </div>
+</div>
+
+<div class="card-landingpage clickable">
+  <img src= >
+  <div class="card-landingpage-infos">
+      <div>
+        <h2> Step 3</h2>
+          <em> Finally, enjoy your personally designed route!</em>
+      </div>
+  </div>
+</div>

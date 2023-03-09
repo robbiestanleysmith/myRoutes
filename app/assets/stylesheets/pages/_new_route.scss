@@ -1,0 +1,119 @@
+.container {
+  width: 90vw;
+  margin: 2px auto;
+  .page-actions {
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.route-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+}
+
+.route-title {
+  h1 {
+    font-size: 28px;
+  }
+  .route-title-input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    .title-text {
+      width: 60%;
+
+    }
+  }
+}
+
+.route-destinations h2 {
+  font-size: 24px;
+}
+.route-content {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 28px;
+  }
+  .route-destinations {
+    width: 50%;
+    margin-top: 15px;
+    margin-right: 5px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    .route-destinations-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-whole {
+      width: 450px;
+      margin: 0px auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+      .form-left {
+        width: 90%;
+      }
+    }
+  }
+  .destination-map {
+    width: 50%;
+    margin-left: 5px;
+    margin-top: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+}
+
+#destination_address {
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.route-destinations-display{
+  width: 450px;
+  margin: 2px auto;
+  .card-destination {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+  .destination-bubble {
+    margin-left: 10px;
+    margin-right: 5px;
+    height: 50px;
+    width: 50px;
+    border: 4px solid $teal;
+    border-radius: 50%;
+  }
+  .destination-text {
+    position: absolute;
+    left: 75px;
+  }
+  .bubble-line-connection {
+    margin-left: 34px;
+    width: 10px;
+    height: 30px;
+    border-left: 4px solid $teal;
+  }
+}

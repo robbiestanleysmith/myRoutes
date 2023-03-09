@@ -5,6 +5,7 @@ class RoutesController < ApplicationController
 
   def show
     @route = Route.find(params[:id])
+    @destination = Destination.new
     @markers = @route.destinations.geocoded.map do |destination|
       {
         lat: destination.latitude,
@@ -20,10 +21,22 @@ class RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
     @route.user = current_user
+    if @route.save
+      redirect_to edit_route_path(@route)
+    else
+      render :new
+    end
   end
 
   def edit
     @route = Route.find(params[:id])
+    @destination = Destination.new
+    @markers = @route.destinations.geocoded.map do |destination|
+      {
+        lat: destination.latitude,
+        lng: destination.longitude
+      }
+    end
   end
 
   def update
@@ -34,6 +47,7 @@ class RoutesController < ApplicationController
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
+    redirect_to routes_path
   end
 
   private

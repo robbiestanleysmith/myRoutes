@@ -1,0 +1,12 @@
+2023-03-09 10:41:09.345 GMT [4524] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin22.1.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2023-03-09 10:41:09.346 GMT [4524] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-09 10:41:09.346 GMT [4524] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-09 10:41:09.348 GMT [4524] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-09 10:41:09.359 GMT [4525] LOG:  database system was shut down at 2023-03-09 10:41:07 GMT
+2023-03-09 10:41:09.374 GMT [4524] LOG:  database system is ready to accept connections
+2023-03-09 10:41:26.362 GMT [4590] FATAL:  database "my_routes_development" does not exist
+2023-03-09 10:41:29.596 GMT [4591] FATAL:  database "my_routes_development" does not exist
+2023-03-09 10:41:54.915 GMT [5107] FATAL:  database "my_routes_development" does not exist
+2023-03-09 10:45:21.065 GMT [5305] ERROR:  database "my_routes_development" is being accessed by other users
+2023-03-09 10:45:21.065 GMT [5305] DETAIL:  There is 1 other session using the database.
+2023-03-09 10:45:21.065 GMT [5305] STATEMENT:  DROP DATABASE IF EXISTS "my_routes_development"
