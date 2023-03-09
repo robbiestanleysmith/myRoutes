@@ -1,25 +1,23 @@
- <div class="landingpage-container">
+<div class="landingpage-container">
 
-<div class="banner" style="background-color: black">
-  <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
-  <div class="banner-content">
-    <h1 id="home-title" > myRoutes </h1>
+  <div class="animation">
 
-  <%= video_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678367083/Amazing_map_b9dngk.gif", loop: true, autoplay: "autoplay", muted: true, class: "home-animation" %>
+    <div class="banner" style="background-color: black">
+      <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
+
+      <div class="banner-content">
+        <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", loop: true, autoplay: "autoplay", muted: true, class: "home-animation" %>
+        <h1 id="home-title" > myRoutes </h1>
+      </div>
+    </div>
   </div>
-</div>
 
 
-<ul data-controller="sortable" data-sortable-target="results">
-  <li>First</li>
-  <li>Second</li>
-  <li>Third</li>
-  <li>Fourth</li>
-</ul>
-
-
-
-</div>
-<div>
+  <ul data-controller="sortable" data-sortable-target="results">
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+    <li>Fourth</li>
+  </ul>
 
 </div>
