@@ -13,5 +13,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import NewRouteController from "./new_route_controller"
+application.register("new-route", NewRouteController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)

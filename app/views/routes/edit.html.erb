@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="page-actions">
+    <div class="page-actions-back">
+    </div>
+    <div class="page-actions-sharing">
+      <i class="fa-regular fa-trash-can px-3"></i>
+      <i class="fa-solid fa-arrow-up-from-bracket px-3"></i>
+    </div>
+  </div>
+
+  <div class="route-title">
+    <h1><strong><%= @route.title %></strong></h1>
+  </div>
+
+  <div class="destinations-text">
+    <h1>Add destinations to your route</h1>
+  </div>
+
+  <div class="route-content my-3">
+
+    <div class="route-destinations">
+
+      <div class="route-destinations-actions">
+        <span class="m-3">Cancel</span>
+      </div>
+
+      <div class="route-destinations-form mx-3">
+        <%= simple_form_for [@route, @destination], html: { class: 'form-inline' } do |f| %>
+
+          <div class="form-whole">
+            <div class="form-left">
+              <%= f.input :address,
+                input_html: {data: {address_autocomplete_target: "address"}},
+                label: false,
+                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                %>
+            </div>
+            <div class="form-right">
+              <%= f.submit "Add", class: "btn btn-outline-primary mx-2" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
+        <% @route.destinations.each_with_index do |destination, index| %>
+        <div class="card-destination" >
+          <div class="destination-bubble">
+          </div>
+          <div class="destination-text">
+            <%= destination.address %>
+            <%= link_to "Delete", route_destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+          </div>
+        </div>
+        <% unless index == (@route.destinations.length - 1) %>
+          <div class="bubble-line-connection">
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+
+
+    </div>
+    <div class="route-map border">
+      Map
+    </div>
+  </div>
+
+</div>
