@@ -53,7 +53,7 @@ class RoutesController < ApplicationController
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
-    raise
+    redirect_to routes_path
   end
 
   private

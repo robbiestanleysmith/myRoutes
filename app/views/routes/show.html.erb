@@ -1,13 +1,48 @@
-<h1><%= @route.title %></h1>
+<div class="container">
+  <div class="page-actions">
+    <div class="page-actions-back">
+    </div>
+    <div class="page-actions-sharing my-2">
+      <i class="fa-solid fa-arrow-up-from-bracket px-3"></i>
+    </div>
+  </div>
 
-<%= cl_image_tag @route.photo.key %>
+  <div class="route-title my-1">
+    <h1><strong><%= @route.title %></strong></h1>
+  </div>
 
-<ul><% @route.destinations.each do |r| %>
-<li><%= r.title %></li>
-<% end %>
-</ul>
+  <div class="route-actions">
+    <%= link_to '<i class="fa-regular fa-trash-can"></i> Delete route'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
+    <%= link_to '<i class="fa-solid fa-floppy-disk"></i> Save route'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+  </div>
 
-<p>Distance: <%= @route.distance %>km</p>
-<p>Time: <%= @route.time %>minutes</p>
+  <div class="route-content my-1">
 
-<%= render "shared/map" %>
+    <div class="route-destinations">
+      <div class="route-destinations-actions m-3">
+        <h2>Here is your route</h2>
+      </div>
+
+      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
+        <% @route.destinations.each_with_index do |destination, index| %>
+        <div class="card-destination" >
+          <div class="destination-bubble">
+          </div>
+          <div class="destination-text">
+            <%= destination.address %>
+            <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+          </div>
+        </div>
+        <% unless index == (@route.destinations.length - 1) %>
+          <div class="bubble-line-connection">
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="destination-map p-1">
+      <%= render "shared/map" %>
+    </div>
+  </div>
+
+</div>
