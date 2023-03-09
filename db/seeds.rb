@@ -1,15 +1,15 @@
 require "open-uri"
 
 puts "Cleaning database"
-User.destroy_all
-Route.destroy_all
-Destination.destroy_all
 RouteDestination.destroy_all
+Destination.destroy_all
+Route.destroy_all
+User.destroy_all
 
 puts "Seeding database"
 
 user1 = User.create!(email: "rachel@gmail.com", password: "rachel", first_name: "Rachel", last_name: "Smith", age: 34, location: "London")
-puts "Seeding 1/5 users..."
+puts "Seeding 1 user..."
 avatar1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678277535/rachel2_zsjgbi.png")
 user1.photo.attach(io: avatar1, filename: "av1.jpg", content_type: "image/png")
 
@@ -36,7 +36,8 @@ user1.photo.attach(io: avatar1, filename: "av1.jpg", content_type: "image/png")
 
 puts "Seeding routes and destinations..."
 
-route1 = Route.create!(title: "London Thames walking tour", user: user1)
+
+route1 = Route.create!(title: "London Thames walking tour", user: user1, distance: "", time: "")
 routepic1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/london_zas6np.jpg")
 route1.photo.attach(io: routepic1, filename: "rp1.jpg", content_type: "image/jpg")
 
@@ -68,7 +69,7 @@ dest5.photo.attach(io: destpic5, filename: "dp5.jpg", content_type: "image/jpg")
 
 
 
-route2 = Route.create!(title: "Exploring Lisbon", user: user1)
+route2 = Route.create!(title: "Exploring Lisbon", user: user1, distance: "", time: "")
 routepic2 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/lisbon_boahbs.jpg")
 route2.photo.attach(io: routepic2, filename: "rp2.jpg", content_type: "image/jpg")
 
@@ -83,7 +84,8 @@ RouteDestination.create!(route: route2, destination: dest9)
 
 
 
-route3 = Route.create!(title: "Paris architecture", user: user1)
+
+route3 = Route.create!(title: "Paris architecture", user: user1, distance: "", time: "")
 routepic3 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286627/eiffeltower_itl1at.png")
 route3.photo.attach(io: routepic3, filename: "rp3.jpg", content_type: "image/png")
 
