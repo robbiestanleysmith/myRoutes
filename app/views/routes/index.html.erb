@@ -1,8 +1,9 @@
-<h1>Welcome back!</h1>
+ <div class="card-user my-3">
+    <h1>Welcome, <%= @user.first_name.capitalize %>!</h1>
+  </div>
 
 
 <header> Here are your most recent routes...</header>
-
 
 
 
@@ -21,10 +22,6 @@
     <div class="card-route-infos">
       <div>
         <h2><%= route.title %></h2>
-        <p><%#= route.route_destination.count %></p>
-        <p><%#= route.distance | route.time %></p>
-
-        <%#= MAKE SURE TO ADD EDIT ROUTE/OPEN IN MAPS BUTTONS %>
 
       </div>
       <h2 class="card-route-title"></h2>
