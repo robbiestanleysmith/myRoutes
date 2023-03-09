@@ -12,6 +12,13 @@
   }
 }
 
+.route-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+}
+
 .route-title {
   h1 {
     font-size: 28px;
@@ -28,8 +35,8 @@
   }
 }
 
-.destinations-text h1 {
-  font-size: 28px;
+.route-destinations h2 {
+  font-size: 24px;
 }
 .route-content {
   display: flex;
