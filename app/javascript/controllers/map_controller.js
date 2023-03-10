@@ -38,6 +38,7 @@ export default class extends Controller {
     })
 
     this.#fetchRoute(fetchQueryString)
+
   }
 
   #addMarkersToMap() {
