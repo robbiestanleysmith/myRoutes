@@ -17,3 +17,10 @@
 2023-03-09 19:56:49.113 GMT [2432] LOG:  database system was shut down at 2023-03-09 19:56:47 GMT
 2023-03-09 19:56:49.134 GMT [2431] LOG:  database system is ready to accept connections
 2023-03-09 19:57:04.332 GMT [2512] FATAL:  database "my_routes_development" does not exist
+2023-03-10 09:51:21.366 GMT [3702] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin22.1.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2023-03-10 09:51:21.367 GMT [3702] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-10 09:51:21.367 GMT [3702] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-10 09:51:21.370 GMT [3702] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-10 09:51:21.382 GMT [3703] LOG:  database system was shut down at 2023-03-10 09:51:19 GMT
+2023-03-10 09:51:21.397 GMT [3702] LOG:  database system is ready to accept connections
+2023-03-10 09:51:32.580 GMT [3743] FATAL:  database "my_routes_development" does not exist
