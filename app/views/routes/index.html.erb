@@ -13,17 +13,20 @@
 
         <div class="card-route-status px-3 py-2">
           <div class="location border">
-            <button type="button" class="btn btn-outline-primary w-100"><%= route.destinations.first.city %></button>
+            <%= link_to route_path(route) do %>
+              <button type="button" class="btn btn-outline-primary w-100"><%= route.destinations.first.city %></button>
+            <% end %>
           </div>
           <div class="route-action">
-            <%= link_to "Route details", route_path(route), class: "btn btn-outline-primary mx-2"%>
-            <%= link_to "Open in Maps", route_path(route), class: "btn btn-outline-primary mx-2"%>
+            <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, route_path(route), class: "btn btn-outline-primary mx-2"%>
           </div>
         </div>
         <div class="card-route-details px-3 pb-2">
           <div class="route-title-and-img">
             <div class="img">
-              <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+              <%= link_to route_path(route) do %>
+                <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+              <% end %>
             </div>
             <div class="text">
               <h2><%= route.title %></h2>
