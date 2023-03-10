@@ -12,8 +12,8 @@
   </div>
 
   <div class="route-actions">
-    <%= link_to '<i class="fa-solid fa-rotate-left"></i></i>'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
-    <%= link_to '<i class="fa-regular fa-trash-can"></i> Delete route'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
+    <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+    <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
     <%= link_to '<i class="fa-solid fa-floppy-disk"></i>'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
   </div>
 
