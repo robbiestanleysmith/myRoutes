@@ -23,15 +23,14 @@
         <h2>Here is your route</h2>
       </div>
 
-      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
+      <div class="route-destinations-display" >
         <% @route.destinations.each_with_index do |destination, index| %>
-        <div class="card-destination" >
+        <div class="card-destination" data-controller="sortable" data-sortable-target="results">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
             <span class="destination-title"><%= destination.title %></span>
             <span class="destination-address"><%= destination.address %></span>
-            <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
