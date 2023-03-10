@@ -11,28 +11,33 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
+    const markersarray = this.markersValue
+
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       zoom: 13,
     })
+
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
+    console.log(markersarray)
+    let fetchQueryString = "https://api.mapbox.com/directions/v5/mapbox/walking/"
+    let i = 1
+    markersarray.forEach((marker) => {
+      if (i == markersarray.length) {
+        fetchQueryString = fetchQueryString + marker.lng + "," + marker.lat + `?geometries=geojson&access_token=${mapboxgl.accessToken}`
+      }
+      else {
+        fetchQueryString = fetchQueryString + marker.lng + "," + marker.lat + ";"
+      }
+      i += 1
+    })
 
-    // until b = array.length do this
-    // within the loop add 1 to a and 1 to b
-
-    let a = 0;
-    let b = 2;
-
-    while (b < this.markersValue.length) {
-      const markersarray = this.markersValue.slice(a, b)
-      console.log(markersarray)
-      this.#fetchRoute(markersarray)
-      a += 1
-      b += 1
-    }
+    this.#fetchRoute(fetchQueryString)
 
   }
 
@@ -60,8 +65,8 @@ export default class extends Controller {
     });
   }
 
-  #fetchRoute(markersarray) {
-    fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${markersarray[0].lng},${markersarray[0].lat};${markersarray[1].lng},${markersarray[1].lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`)
+  #fetchRoute(fetchQueryString) {
+    fetch(fetchQueryString)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
