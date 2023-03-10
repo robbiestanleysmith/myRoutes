@@ -19,14 +19,21 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
-    let a = 0;
-    let b = 2;
 
     // until b = array.length do this
     // within the loop add 1 to a and 1 to b
-    const markersarray = this.markersValue.slice(0, 2)
-    console.log(markersarray)
-    this.#fetchRoute(markersarray)
+
+    let a = 0;
+    let b = 2;
+
+    while (b < this.markersValue.length) {
+      const markersarray = this.markersValue.slice(a, b)
+      console.log(markersarray)
+      this.#fetchRoute(markersarray)
+      a += 1
+      b += 1
+    }
+
   }
 
   #addMarkersToMap() {
