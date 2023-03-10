@@ -13,7 +13,7 @@
 
   <div class="route-actions">
     <%= link_to '<i class="fa-regular fa-trash-can"></i> Delete route'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
-    <%= link_to '<i class="fa-solid fa-floppy-disk"></i> Save route'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+    <%= link_to '<i class="fa-solid fa-pen-to-square"></i> Edit route'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
   </div>
 
   <div class="route-content my-1">
@@ -29,7 +29,8 @@
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <%= destination.address %>
+            <span class="destination-title"><%= destination.title %></span>
+            <span class="destination-address"><%= destination.address %></span>
             <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           </div>
         </div>
@@ -44,5 +45,3 @@
       <%= render "shared/map" %>
     </div>
   </div>
-
-</div>

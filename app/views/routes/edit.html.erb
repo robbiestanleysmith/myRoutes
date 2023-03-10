@@ -47,7 +47,8 @@
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <%= destination.address %>
+            <span class="destination-title"><%= destination.title %></span>
+            <span class="destination-address"><%= destination.address %></span>
             <%= link_to "Delete", destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           </div>
         </div>
