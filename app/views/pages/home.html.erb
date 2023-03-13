@@ -6,19 +6,13 @@
 
       <div class="banner-content">
 
-      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
-
-
-
-<script>
- const gif = document.getElementById("gif")
- setInterval(function() {
-  gif.src = "assets/map_animated.gif"
- }, 6000)
-</script>
         <div class="home-title-container">
-          <h1 id="home-title" > myRoutes </h1>
-          <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
+        
+          <div class="d-flex justify-content-center align-items-center">
+            <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
+            <h1 id="home-title" > myRoutes </h1>
+          </div>
+          <a href="https://my-routes.co.uk/routes" class="btn-byj btn btn-primary"> Begin your journey </a>
 
         </div>
 
@@ -27,10 +21,6 @@
       const gif = document.getElementById("gif")
       setInterval(function() {
         gif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
-      }, 6000)
-       const smallGif = document.getElementById("small-gif")
-      setInterval(function() {
-        smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
       }, 6000)
       </script>
 
@@ -43,7 +33,7 @@
     <div class="container">
       <div class="row product-title-info">
         <div class="col-md-12">
-          <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"> <%= image_tag("chevron.png", width:"60") %></a>
+          <a class="ct-btn-scroll ct-js-btn-scroll" href="#section1"> <%= image_tag("chevron.png", width:"60") %></a>
 
   <section class="company-heading intro-type" id="parallax-one">
     <div class="container">
@@ -58,7 +48,7 @@
 </div>
 
 
-<div class="cards-instructions my-4">
+<div id="section1" class="cards-instructions mb-4">
 
   <div class="card-step">
     <h2 style="margin: 10px;"> Step 1</h2>
