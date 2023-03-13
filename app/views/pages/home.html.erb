@@ -7,41 +7,25 @@
       <div class="banner-content">
 
 
-      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
 
-
- <div class="d-flex justify-content-center align-items-center">
-            <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
-            <h1 id="home-title" > myRoutes </h1>
-          </div>
-          <a href="https://my-routes.co.uk/routes" class="btn-byj btn btn-primary"> Begin your journey </a>
-
-
-
-<script>
- const gif = document.getElementById("gif")
- setInterval(function() {
-  gif.src = "assets/map_animated.gif"
- }, 6000)
-</script>
 
         <div class="home-title-container">
-        
+
           <div class="d-flex justify-content-center align-items-center">
             <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
             <h1 id="home-title" > myRoutes </h1>
           </div>
-          <a href="https://my-routes.co.uk/routes" class="btn-byj btn btn-primary"> Begin your journey </a>
-
+          <%= link_to "Begin your journey", routes_path, class: "btn-byj btn btn-primary" %>
+          <%# <a href="https://my-routes.co.uk/routes" class="btn-byj btn btn-primary"> Begin your journey </a> %>
         </div>
-
 
       <script>
       const gif = document.getElementById("gif")
       setInterval(function() {
-        gif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
-      }, 6000)
+        gif.src = "assets/map_animated.gif"
+      }, 6
       </script>
+
 
   </div>
     </div>
