@@ -9,6 +9,7 @@
       <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
 
 
+
 <script>
  const gif = document.getElementById("gif")
  setInterval(function() {
@@ -20,10 +21,15 @@
           <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
         </div>
 
+
       <script>
       const gif = document.getElementById("gif")
       setInterval(function() {
         gif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
+      }, 6000)
+       const smallGif = document.getElementById("small-gif")
+      setInterval(function() {
+        smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
       }, 6000)
       </script>
 
@@ -54,19 +60,19 @@
 <div class="cards-instructions my-4">
 
   <div class="card-step">
-    <h2> Step 1</h2>
+    <h2 style="margin: 10px;"> Step 1</h2>
     <p style="text-align:center;"> Download our app! </p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
 
   <div class="card-step">
-    <h2> Step 2</h2>
-    <p style="text-align:center;"> Add your first location </p>
+    <h2 style="margin: 10px;"> Step 2</h2>
+    <p style="text-align:center;"> Add your locations and create your route</p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
 
   <div class="card-step">
-    <h2> Step 3</h2>
+    <h2 style="margin: 10px;"> Step 3</h2>
     <p style="text-align:center;"> Save your route </p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
