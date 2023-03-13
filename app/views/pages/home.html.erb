@@ -14,41 +14,24 @@
   gif.src = "assets/map_animated.gif"
  }, 6000)
 </script>
-
-        <h1 id="home-title" > myRoutes </h1>
+        <div class="home-title-container">
+          <h1 id="home-title" > myRoutes </h1>
+          <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
+        </div>
   </div>
     </div>
       </div>
 
-  <section class="company-heading intro-type" id="parallax-one">
+  <section class="company-heading intro-type" id="parallax-one" style="text-align:center">
     <div class="container">
       <div class="row product-title-info">
         <div class="col-md-12">
-          <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
+          <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"> <%= image_tag("chevron.png", width:"60") %></a>
         </div>
       </div>
     </div>
     <div class="parallax" id="parallax-cta" style="background-image:url(https://www.solodev.com/assets/anchor/company-hero2.jpg);"></div>
   </section>
-<div class="main">
-  <section id="section2">
-    <div class="container jumbo">
-      <div class="jumbotron">
-        <p> Fed up of not being able to save your routes whilst using GoogleMaps? MyRoutes enables you to save your routes, to share them with your friends and never forgert your travel memories!
-        Maximize your travel efficiency. Begin your journey. </p>
-
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-
-
-      </div>
-    </div>
-  </section>
-</div>
-
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <div class="cards-instructions my-4">
 
@@ -70,3 +53,166 @@
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
 </div>
+
+<div class="main">
+  <section id="section2">
+
+    <div class="p-5 mb-4 bg-light rounded-3" style= "text-align:center">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Maximize your travel efficiency. Use myRoutes.</h1>
+        <p class="fs-4 mb-5">Fed up of not being able to save your routes on GoogleMaps? Join our community of users to maximize your travel efficiency. From storing your routes on our website to viewing your saved routes, we've got you sorted!</p>
+        <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+</div>
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<title>Testimonial HTML</title>
+<!--Stylesheet--------------------------->
+<link rel="stylesheet" href="css/style.css"/>
+<!--Fav-icon------------------------------>
+<link rel="shortcut icon" href="images/fav-icon.png"/>
+<!--poppins-font-family------------------->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<!--using-Font-Awesome-------------------->
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--Testimonials------------------->
+    <section id="testimonials">
+        <!--heading--->
+        <div class="testimonial-heading">
+            <span>What our customers say?</span>
+        </div>
+        <!--testimonials-box-container------>
+        <div class="testimonial-box-container">
+            <!--BOX-1-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Touseeq Ijaz</strong>
+                            <span>@touseeqijazweb</span>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p>myRoutes has increased my travel effiency massively! It's a great alternative to all the other travel planners I used beforehand. I would definitely recommend this app to anyone willing to plan their trips before travelling!</p>
+                </div>
+            </div>
+            <!--BOX-2-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=female" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>J.K Rowling</strong>
+                            <span>@jkrowling</span>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p>myRoutes ticks all the boxes! From their simply designed website to transferring to GoogleMaps whilst on the go, I couldn't have asked for more! I love sharing my routes with my friends and family!</p>
+                </div>
+            </div>
+            <!--BOX-3-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Harry Potter</strong>
+                            <span>@DanielRedclief</span>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p>myRoutes has increased my travel effiency massively! It's a great alternative to all the other travel planners I used beforehand. I would definitely recommend this app to anyone willing to plan their trips before travelling!</p>
+                </div>
+            </div>
+            <!--BOX-4-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=female" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Oliva</strong>
+                            <span>@Olivaadward</span>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p>myRoutes has increased my travel effiency massively! It's a great alternative to all the other travel planners I used beforehand. I would definitely recommend this app to anyone willing to plan their trips before travelling!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
