@@ -40,6 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 40px !important;
+
 }
 #home-title {
   font-size: 170px;
@@ -209,4 +211,24 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+btn-byj {
+  align-items: center;
+  font-size: 35px;
+  color: #FFFFFF;
+  background-color: #285C7C;
+  border-radius: 15px;
+  font-family: sans-serif;
+  box-sizing: round($number: 15);
+  margin-top: 25px;
+  padding: 8px 24px;
+  &:hover {
+
+  }
+
+}
+
+.btn-lg {
+  border-radius: 15px;
 }
