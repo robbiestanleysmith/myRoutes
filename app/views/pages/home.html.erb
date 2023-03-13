@@ -6,12 +6,16 @@
 
       <div class="banner-content">
 
-      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 1git 20 , id: "gif" %>
+      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
 
       <script>
       const gif = document.getElementById("gif")
       setInterval(function() {
         gif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
+      }, 6000)
+       const smallGif = document.getElementById("small-gif")
+      setInterval(function() {
+        smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
       }, 6000)
       </script>
 
@@ -34,7 +38,7 @@
   <section id="section2">
     <div class="container jumbo">
       <div class="jumbotron">
-        <p> Fed up of not being able to save your routes whilst using GoogleMaps? MyRoutes enables you to save your routes, to share them with your friends and never forgert your travel memories!
+        <p> Fed up of not being able to save your routes whilst using GoogleMaps? myRoutes enables you to save your routes, to share them with your friends and never forgert your travel memories!
         Maximize your travel efficiency. Begin your journey. </p>
 
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
@@ -53,19 +57,19 @@
 <div class="cards-instructions my-4">
 
   <div class="card-step">
-    <h2> Step 1</h2>
+    <h2 style="margin: 10px;"> Step 1</h2>
     <p style="text-align:center;"> Download our app! </p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
 
   <div class="card-step">
-    <h2> Step 2</h2>
-    <p style="text-align:center;"> Add your first location </p>
+    <h2 style="margin: 10px;"> Step 2</h2>
+    <p style="text-align:center;"> Add your locations and create your route</p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
 
   <div class="card-step">
-    <h2> Step 3</h2>
+    <h2 style="margin: 10px;"> Step 3</h2>
     <p style="text-align:center;"> Save your route </p>
     <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
   </div>
