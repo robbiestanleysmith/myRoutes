@@ -20,37 +20,58 @@
   <div class="route-content my-1">
 
     <div class="route-destinations">
-      <div class="route-destinations-actions m-3">
+      <div class="route-destinations-actions mx-3">
         <h2>Add destinations to your route</h2>
       </div>
 
-      <div class="route-destinations-form mx-3">
-        <%= simple_form_for [@route, @destination], html: { class: 'form-inline' } do |f| %>
+      <div class="route-destinations-form mb-3 mx-3">
 
           <div class="form-whole">
+
             <div class="form-left">
+              <%= simple_form_for [@route, @destination], html: { class: 'form-inline' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
+              <%= f.input :title,
+                    input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
+                    label: false,
+                    as: :hidden %>
+
+              <%= f.input :latitude,
+                  input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
+                  label: false,
+                  as: :hidden %>
+
+              <%= f.input :longitude,
+                  input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
+                  label: false,
+                  as: :hidden %>
+
+              <%= f.input :city,
+                    input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }},
+                    label: false,
+                    as: :hidden %>
+
               <%= f.input :address,
-                input_html: {data: {address_autocomplete_target: "address"}},
-                label: false,
-                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-                %>
+                    input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
+                    label: false
+                    %>
             </div>
+
             <div class="form-right">
-              <%= f.submit "Add", class: "btn btn-outline-primary mx-2" %>
+              <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
             </div>
+
           </div>
         <% end %>
       </div>
 
       <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
         <% @route.destinations.each_with_index do |destination, index| %>
-        <div class="card-destination" >
+        <div class="card-destination my-2">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <span class="destination-title"><%= destination.title %></span>
-            <span class="destination-address"><%= destination.address %></span>
-            <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+            <span class="destination-title"><%= destination.title %></span> <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%><br>
+            <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ")%></span>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
@@ -60,10 +81,28 @@
         <% end %>
       </div>
     </div>
-    <div class="destination-map p-1">
-      <%= render "shared/map" %>
+
+    <div class="destination-map-and-specs p-1">
+      <div class="destination-specs">
+
+        <div class="specs">
+          <h1>Walking</h1>
+          <h2>Route mode</h2>
+        </div>
+        <div class="specs">
+        <h1><%= @route.distance %> km</h1>
+          <h2>Route distance</h2>
+        </div>
+        <div class="specs">
+          <h1><%= @route.time %> min</h1>
+          <h2>Route duration</h2>
+        </div>
+      </div>
+      <div class="destination-map">
+        <%= render "shared/map" %>
+      </div>
+
     </div>
   </div>
 
 </div>
-
