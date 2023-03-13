@@ -11,6 +11,26 @@
   position: relative;
 }
 
+.btn-byj {
+  align-items: center;
+  font-size: 35px;
+  color: #FFFFFF;
+  background-color: #285C7C;
+  border-radius: 15px;
+  font-family: sans-serif;
+  box-sizing: round($number: 15);
+  margin-top: 25px;
+  padding: 8px 24px;
+  &:hover {
+
+  }
+
+}
+
+.btn-lg {
+  border-radius: 15px;
+}
+
 .banner-content {
   position: absolute;
   top: 0;
@@ -41,6 +61,7 @@
   display: flex;
   color: #FFFFFF;
   justify-content: space-between;
+  padding-top: 40px !important;
 }
 
 .card-step {

@@ -14,7 +14,7 @@
         <div class="card-route-status px-3 py-2">
           <div class="location border">
             <%= link_to route_path(route) do %>
-              <button type="button" class="btn btn-outline-primary w-100"><%= route.destinations.first.city %></button>
+              <button type="button" class="btn btn-outline-primary w-100"><%= route.city %></button>
             <% end %>
           </div>
           <div class="route-action">
@@ -26,7 +26,9 @@
           <div class="route-title-and-img">
             <div class="img">
               <%= link_to route_path(route) do %>
-                <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+                <% if route.photo.attached? %>
+                  <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+                <% end %>
               <% end %>
             </div>
             <div class="text">
