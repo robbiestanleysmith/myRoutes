@@ -29,9 +29,7 @@ export default class extends Controller {
       this.latitudeTarget.value = event.result["geometry"]["coordinates"][0]
       this.longitudeTarget.value = event.result["geometry"]["coordinates"][1]
 
-
       // Title
-
       this.titleTarget.value = event.result["text"]
 
       // City

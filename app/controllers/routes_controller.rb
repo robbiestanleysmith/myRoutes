@@ -33,6 +33,7 @@ class RoutesController < ApplicationController
     @destination = Destination.new
     @markers = @route.destinations.geocoded.map do |destination|
       {
+
         lat: destination.latitude,
         lng: destination.longitude
       }
