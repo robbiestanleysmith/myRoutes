@@ -1,3 +1,6 @@
+require "open-uri"
+require "JSON"
+
 class DestinationsController < ApplicationController
   def index
     @destinations = Destination.all
@@ -21,8 +24,9 @@ class DestinationsController < ApplicationController
       @destination.user = current_user
       @destination.save
     end
+
     RouteDestination.create(route: @route, destination: @destination)
-    redirect_to edit_route_path(@route)
+    redirect_to edit_route_path(@route), status: :unprocessable_entity
   end
 
   def edit
@@ -37,12 +41,12 @@ class DestinationsController < ApplicationController
   def destroy
     @destination = Destination.find(params[:id])
     @destination.destroy
-    redirect_back(fallback_location: routes_path)
+    redirect_back(fallback_location: routes_path, status: :unprocessable_entity)
   end
 
   private
 
   def destination_params
-    params.require(:destination).permit(:title, :longitude, :latitude, :address)
+    params.require(:destination).permit(:title, :longitude, :latitude, :address, :city)
   end
 end
