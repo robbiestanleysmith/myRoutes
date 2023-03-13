@@ -53,6 +53,6 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:title)
+    params.require(:route).permit(:title, :photo, :city)
   end
 end
