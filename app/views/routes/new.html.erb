@@ -8,16 +8,22 @@
   </div>
 
   <div class="route-title">
-    <h1>Give your route a title</h1>
+    <h1>Create a new route</h1>
     <%= simple_form_for @route, html: { class: 'form-inline w-100 route-title my-3' } do |f| %>
-    <div class="route-title-input">
-      <div class="title-text">
-        <%= f.input :title, placeholder: "E.g. London visit, day I", label: false %>
+      <div class="row justify-content-center">
+        <div class="title-text col-12">
+          <%= f.input :title, placeholder: "E.g. London visit, day 1", label: "Title:" %>
+        </div>
+         <div class="title-text col-12">
+          <%= f.input :city, placeholder: "E.g. London", label: "City:" %>
+        </div>
+        <div class="col-12">
+          <%= f.input :photo, as: :file, placeholder: "Choose an image" %>
+        </div>
+        <div class="title-submit mx-3">
+          <%= f.submit 'Save', class: "btn btn-primary"%>
+        </div>
+        <% end %>
       </div>
-      <div class="title-submit mx-3">
-        <%= f.submit 'Save', class: "btn btn-primary"%>
-      </div>
-      <% end %>
-    </div>
   </div>
 </div>
