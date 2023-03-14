@@ -5,7 +5,6 @@
       <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
 
       <div class="banner-content">
-
         <div class="home-title-container">
 
           <div class="d-flex justify-content-center align-items-center">
@@ -14,18 +13,17 @@
           </div>
           <%= link_to "Begin your journey", routes_path, class: "btn-byj btn btn-primary" %>
         </div>
-
-      <script>
-      const gif = document.getElementById("gif")
-      setInterval(function() {
-        gif.src = "assets/map_animated.gif"
-      }, 6
-      </script>
-
-
-  </div>
-    </div>
       </div>
+     <script>
+        const gif = document.getElementById("gif")
+        setInterval(function)() {
+          gif.src = "assets/map_animated.gif"
+        }, 6
+      </script>
+    </div>
+  </div>
+
+
 
 
   <section class="company-heading intro-type" id="parallax-one" style="text-align:center">
@@ -33,58 +31,54 @@
       <div class="row product-title-info">
         <div class="col-md-12">
 
-           <a class="ct-btn-scroll ct-js-btn-scroll" href="#section1"> <%= image_tag("chevron.png", width:"60") %></a>
+            <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"> <%= image_tag("chevron.png", width:"60") %></a>
 
-
-  <section class="company-heading intro-type" id="parallax-one">
-    <div class="container">
-      <div class="row product-title-info">
-        <div class="col-md-12">
+            <section class="company-heading intro-type" id="parallax-one">
+            <div class="container">
+            <div class="row product-title-info">
+            <div class="col-md-12">
         </div>
       </div>
     </div>
     <div class="parallax" id="parallax-cta" style="background-image:url(https://www.solodev.com/assets/anchor/company-hero2.jpg);"></div>
   </section>
 
-</div>
+  <div id="section1" class="cards-instructions mb-4">
+    <div class="card-step">
+      <h2 style="margin: 10px;"> Step 1</h2>
+      <p style="text-align:center;"> Dream about your favourite location! </p>
+      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
+    </div>
 
+    <div class="card-step">
+      <h2 style="margin: 10px;"> Step 2</h2>
+      <p style="text-align:center;"> Add your locations and create your route! </p>
+      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
+    </div>
 
-<div id="section1" class="cards-instructions mb-4">
-
-  <div class="card-step">
-    <h2 style="margin: 10px;"> Step 1</h2>
-    <p style="text-align:center;"> Download our app! </p>
-    <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
-  </div>
-
-  <div class="card-step">
-    <h2 style="margin: 10px;"> Step 2</h2>
-    <p style="text-align:center;"> Add your locations and create your route</p>
-    <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
-  </div>
-
-  <div class="card-step">
-    <h2 style="margin: 10px;"> Step 3</h2>
-    <p style="text-align:center;"> Save your route </p>
-    <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
+    <div class="card-step">
+      <h2 style="margin: 10px;"> Step 3</h2>
+      <p style="text-align:center;"> Save your route and enjoy! </p>
+      <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678373261/location_marker_ordpqy.gif", height: 90 %>
+    </div>
   </div>
 </div>
 
 
 <div class="main">
   <section id="section2">
-
     <div class="p-5 mb-4 bg-light rounded-3" style= "text-align:center">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Maximize your travel efficiency. Use myRoutes.</h1>
         <p class="fs-4 mb-5">Fed up of not being able to save your routes on GoogleMaps? Join our community of users to maximize your travel efficiency. From storing your routes on our website to viewing your saved routes, we've got you sorted!</p>
-        <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
       </div>
+      <%= link_to "Begin your journey", routes_path, class: "btn btn-primary btn-lg" %>
     </div>
   </section>
 </div>
 
 </div>
+
 
 <body>
     <!--Testimonials------------------->
