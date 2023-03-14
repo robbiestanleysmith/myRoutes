@@ -17,14 +17,28 @@
           <div class="route-action">
             <%= link_to 'Route details', route_path(route), class: "btn btn-outline-primary mx-2"%>
             <%# For sights %>
-            <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, route_path(route), class: "btn btn-outline-primary mx-2"%>
+            <%# <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, route_path(route), class: "btn btn-outline-primary mx-2"%> 
+            <%# <%= url= "https://www.google.com/maps/dir/?api=1&origin=Le+Wagon%2CLondon&destination=Harrods%2CLondon&travelmode=walking&waypoints=Big+Ben%7CTower+Bridge" %>
+            <a href= 'https://www.google.com/maps/dir/?api=1&origin=Le+Wagon%2CLondon&destination=Harrods%2CLondon&travelmode=walking&waypoints=Big+Ben%7CTower+Bridge' class='btn btn-outline-primary mx-2'><i class="fa-solid fa-map-location-dot"></i> Navigate</a>
+
             <%# <%= url = "https://www.google.com/maps/dir/?api=1&origin=#{Destination.find(route.route_destinations[0].destination_id).title.gsub(/\s/, "+")}%2C#{Destination.find(route.route_destinations[0].destination_id).city.gsub(/\s/, "+")}}&destination=#{Destination.find(route.route_destinations[1].destination_id).title.gsub(/\s/, "+")}%2C#{Destination.find(route.route_destinations[1].destination_id).city.gsub(/\s/, "+")}&travelmode=walking" %>
             <%# <% route.route_destinations.each_with_index do |destination, index| %>
               <%# <% if index != 0 || index != 1 do %>
                 <%# <% url << %>
-                <%# <% end %>
-                <%# <% end %>
-              </div>
+
+              <%# <% end %>
+            <%# <% end %>
+          </div>
+        </div>
+        <div class="card-route-details px-3 pb-2">
+          <div class="route-title-and-img">
+            <div class="img">
+              <%= link_to route_path(route) do %>
+                <% if route.photo.attached? %>
+                  <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+                <% end %>
+              <% end %>
+              
             </div>
             <div class="card-route-details px-3 pb-2">
               <div class="route-title-and-img">
