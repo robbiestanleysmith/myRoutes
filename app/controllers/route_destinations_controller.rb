@@ -1,17 +1,17 @@
 class RouteDestinationsController < ApplicationController
-  def index
-    @route_destinations = RouteDestination.all
-    @markers = @route_destinations.geocoded.map do |route_destination|
-      {
-        lat: route_destination.latitude,
-        lng: route_destination.longitude
-      }
-    end
-  end
+  # def index
+  #   @route_destinations = RouteDestination.all
+  #   @markers = @route_destinations.geocoded.map do |route_destination|
+  #     {
+  #       lat: route_destination.latitude,
+  #       lng: route_destination.longitude
+  #     }
+  #   end
+  # end
 
-  def show
-    @route_destination = RouteDestination.find(params[:id])
-  end
+  # def show
+  #   @route_destination = RouteDestination.find(params[:id])
+  # end
 
   def new
     @route_destination = RouteDestination.new
@@ -20,6 +20,7 @@ class RouteDestinationsController < ApplicationController
   def create
     @route_destination = RouteDestination.new(route_destination_params)
     @route_destination.user = current_user
+    raise
   end
 
   def edit

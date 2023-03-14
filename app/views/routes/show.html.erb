@@ -19,65 +19,22 @@
     </div>
 
     <%# Search field & destination display %>
-    <div class="route-destinations">
+    <div class="route-destination my-3">
 
-      <div class="route-destinations-form mb-3 mx-3">
-          <div class="form-whole">
-
-            <div class="form-left">
-              <%= simple_form_for [@route, @destination], html: { class: 'form-inline' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
-              <%= f.input :title,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
-                    label: false,
-                    as: :hidden %>
-
-              <%= f.input :latitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
-                  label: false,
-                  as: :hidden %>
-
-              <%= f.input :longitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
-                  label: false,
-                  as: :hidden %>
-
-              <%# <%= f.input :city, %>
-                    <%# input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }}, %>
-                    <%# label: false, %>
-                    <%# as: :hidden %>
-
-              <%= f.input :address,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
-                    label: false
-                    %>
-            </div>
-
-            <div class="form-right">
-              <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
-            </div>
-
-          </div>
-        <% end %>
-      </div>
-
-      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
-        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destinations, index| %>
+      <div class="route-destinations-display">
+        <% @route_destinations_ordered.each_with_index do |route_destination, index| %>
         <div class="card-destination my-2">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <span class="destination-title"><%= route_destinations.destination.title %></span><br>
-            <% if route_destinations.destination.title == "Custom location" %>
-              <span class="destination-address"><%= route_destinations.destination.address%></span>
+            <span class="destination-title"><%= route_destination.title %></span><br>
+            <% if route_destination.title == "Custom location" %>
+              <span class="destination-address"><%= route_destination.address%></span>
             <% else %>
-              <span class="destination-address"><%= route_destinations.destination.address.split(",")[1..-1].join(", ") %></span>
+              <span class="destination-address"><%= route_destination.address.split(",")[1..-1].join(", ") %></span>
             <% end %>
           </div>
         </div>
-        <% unless index == (@route.destinations.length - 1) %>
-          <div class="bubble-line-connection">
-          </div>
-        <% end %>
         <% end %>
       </div>
     </div>
