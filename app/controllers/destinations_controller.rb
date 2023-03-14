@@ -25,7 +25,13 @@ class DestinationsController < ApplicationController
       @destination.save
     end
 
-    RouteDestination.create(route: @route, destination: @destination)
+    if @route.route_destinations.length.to_i == 0
+      index = 1
+    else
+      index = @route.route_destinations.last.position.to_i + 1
+    end
+
+    RouteDestination.create(route: @route, destination: @destination, position: index)
     redirect_to edit_route_path(@route), status: :unprocessable_entity
   end
 

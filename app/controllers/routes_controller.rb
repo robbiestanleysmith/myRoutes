@@ -43,10 +43,8 @@ class RoutesController < ApplicationController
     @route = Route.find(params[:id])
     @destination = Destination.new
     route_destinations = @route.route_destinations.order(position: :asc).map { |route_destination| route_destination.destination }
-    
     @markers = @route.destinations.geocoded.map do |destination|
       {
-
         lat: destination.latitude,
         lng: destination.longitude
       }
