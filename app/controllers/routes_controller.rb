@@ -12,6 +12,7 @@ class RoutesController < ApplicationController
         lng: destination.longitude
       }
     end
+
   end
 
   def new

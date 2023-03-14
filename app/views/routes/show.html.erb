@@ -1,42 +1,73 @@
 <div class="container">
-  <div class="page-actions">
-    <div class="page-actions-back">
+
+  <%# Left side of page %>
+  <div class="route-content">
+    <div class="page-action m-3">
+      <div class="info-and-back">
+        <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, routes_path(), class: "btn btn-outline-primary" %>
+      </div>
+      <div class="page-action-buttons">
+        <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
+        <div class="btn btn-primary btn-lg" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share your route</a></div>
+        </div>
     </div>
-  </div>
 
-  </div>
+    <div class="route-title mt-2 mx-3">
+      <h1 class="text-center"><strong><%= @route.title %></strong></h1>
+    </div>
 
-
-  <div class="route-title my-1">
-    <h1><strong><%= @route.title %></strong></h1>
-  </div>
-
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
-  <div class="btn btn-primary btn-lg" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share your route</a></div>
-
-
-  <div class="route-actions">
-    <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, myroutes_path(), class: "btn btn-outline-primary" %>
-    <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
-    <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
-  </div>
-
-  <div class="route-content my-1">
-
+    <%# Search field & destination display %>
     <div class="route-destinations">
-      <div class="route-destinations-actions m-3">
-        <h2>Here is your route</h2>
+
+      <div class="route-destinations-form mb-3 mx-3">
+          <div class="form-whole">
+
+            <div class="form-left">
+              <%= simple_form_for [@route, @destination], html: { class: 'form-inline' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
+              <%= f.input :title,
+                    input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
+                    label: false,
+                    as: :hidden %>
+
+              <%= f.input :latitude,
+                  input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
+                  label: false,
+                  as: :hidden %>
+
+              <%= f.input :longitude,
+                  input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
+                  label: false,
+                  as: :hidden %>
+
+              <%# <%= f.input :city, %>
+                    <%# input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }}, %>
+                    <%# label: false, %>
+                    <%# as: :hidden %>
+
+              <%= f.input :address,
+                    input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
+                    label: false
+                    %>
+            </div>
+
+            <div class="form-right">
+              <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
+            </div>
+
+          </div>
+        <% end %>
       </div>
 
-      <div class="route-destinations-display" >
+      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
         <% @route.destinations.each_with_index do |destination, index| %>
-        <div class="card-destination" data-controller="sortable" data-sortable-target="results">
+        <div class="card-destination my-2">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <span class="destination-title"><%= destination.title %></span>
-            <span class="destination-address"><%= destination.address %></span>
+            <span class="destination-title"><%= destination.title %></span><br>
+            <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
@@ -46,9 +77,22 @@
         <% end %>
       </div>
     </div>
-    <div class="destination-map p-1">
-      <%= render "shared/map" %>
-    </div>
   </div>
 
+  <%# Right side of page %>
+  <div class="destination-map-and-specs">
+
+    <div class="destination-specs">
+      <p>Mode: Walking<br>
+      Distance: <%= @route.distance %><br>
+      Time: <%= @route.time %></p>
+    </div>
+
+    <div id="map"
+      data-controller="map"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-map-markers-value="<%= @markers.to_json %>"
+    ></div>
+
+  </div>
 </div>

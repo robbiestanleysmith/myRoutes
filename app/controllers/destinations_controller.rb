@@ -24,7 +24,6 @@ class DestinationsController < ApplicationController
       @destination.user = current_user
       @destination.save
     end
-
     RouteDestination.create(route: @route, destination: @destination)
     redirect_to edit_route_path(@route), status: :unprocessable_entity
   end
@@ -47,6 +46,6 @@ class DestinationsController < ApplicationController
   private
 
   def destination_params
-    params.require(:destination).permit(:title, :longitude, :latitude, :address, :city)
+    params.require(:destination).permit(:title, :latitude, :longitude, :address, :city)
   end
 end
