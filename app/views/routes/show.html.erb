@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-nik">
 
   <%# Left side of page %>
   <div class="route-content">
@@ -67,7 +67,9 @@
           </div>
           <div class="destination-text">
             <span class="destination-title"><%= destination.title %></span><br>
+            <% if destination.address != nil %>
             <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
+            <% end %>
           </div>
         </div>
         <% unless index == (@route.destinations.length - 1) %>
