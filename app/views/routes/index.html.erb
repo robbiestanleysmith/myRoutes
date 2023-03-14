@@ -4,13 +4,10 @@
 </div>
 
 <div class="main-container">
-
   <div class="cards-routes">
     <h1>Your saved routes</h1>
     <% @routes.each do |route| %>
-
       <div class="card-route">
-
         <div class="card-route-status px-3 py-2">
           <div class="location border">
             <%= link_to route_path(route) do %>
@@ -28,6 +25,7 @@
             <%# <% route.route_destinations.each_with_index do |destination, index| %>
               <%# <% if index != 0 || index != 1 do %>
                 <%# <% url << %>
+
               <%# <% end %>
             <%# <% end %>
           </div>
@@ -40,21 +38,30 @@
                   <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
                 <% end %>
               <% end %>
+              
             </div>
-            <div class="text">
-              <h2><%= route.title %></h2>
+            <div class="card-route-details px-3 pb-2">
+              <div class="route-title-and-img">
+                <div class="img">
+                  <%= link_to route_path(route) do %>
+                    <% if route.photo.attached? %>
+                      <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="text">
+                  <h2><%= route.title %></h2>
+                </div>
+              </div>
+              <div class="route-specs px-3">
+                <%= route.route_destinations.length %> stops
+                <br>
+                <%= route.time %> min
+                <br>
+                <%= route.distance %> km
+              </div>
             </div>
           </div>
-          <div class="route-specs px-3">
-            <%= route.route_destinations.length %> stops
-            <br>
-            <%= route.time %> min
-            <br>
-            <%= route.distance %> km
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-
-</div>
+    </div>

@@ -6,13 +6,23 @@ class RoutesController < ApplicationController
   def show
     @route = Route.find(params[:id])
     @destination = Destination.new
-    @markers = @route.destinations.geocoded.map do |destination|
+
+    route_destinations = @route.route_destinations.order(position: :asc).map { |route_destination| route_destination.destination }
+
+    @markers = route_destinations.map do |destination|
+    # @markers = @route.destinations.geocoded.map do |destination|
       {
         lat: destination.latitude,
         lng: destination.longitude
       }
     end
 
+    # @markers = @route.route_destinations.geocoded.map do |route_destination|
+    #   {
+    #     lat: route_destination.destination.latitude,
+    #     lng: route_destination.destination.longitude
+    #   }
+    # end
   end
 
   def new
@@ -32,9 +42,9 @@ class RoutesController < ApplicationController
   def edit
     @route = Route.find(params[:id])
     @destination = Destination.new
+    route_destinations = @route.route_destinations.order(position: :asc).map { |route_destination| route_destination.destination }
     @markers = @route.destinations.geocoded.map do |destination|
       {
-
         lat: destination.latitude,
         lng: destination.longitude
       }

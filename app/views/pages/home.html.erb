@@ -3,6 +3,7 @@
     <div class="banner" style="background-color: black">
       <%= video_tag "https://res.cloudinary.com/dcuj8efm3/video/upload/v1678286863/routes_tc0g77.mp4", loop: true, autoplay: "autoplay", muted: true, class: "home-video" %>
       <div class="banner-content">
+
         <div class="home-title-container">
           <div class="d-flex justify-content-center align-items-center">
             <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
@@ -10,14 +11,24 @@
           </div>
           <%= link_to "Begin your journey", routes_path, class: "btn-byj btn btn-primary" %>
         </div>
-      </div>
-    </div>
-  </div>
 
+      <script>
+      const gif = document.getElementById("gif")
+      setInterval(function() {
+        gif.src = "assets/map_animated.gif"
+      }, 6
+      </script>
+
+
+  </div>
+    </div>
+      </div>
+      
   <section class="company-heading intro-type" id="parallax-one" style="text-align:center">
     <div class="container">
       <div class="row product-title-info">
         <div class="col-md-12">
+
           <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"> <%= image_tag("chevron.png", width:"60") %></a>
           <section class="company-heading intro-type" id="parallax-one">
             <div class="container"></div>
@@ -29,6 +40,7 @@
     </div>
     <div class="parallax" id="parallax-cta" style="background-image:url(https://www.solodev.com/assets/anchor/company-hero2.jpg);"></div>
   </section>
+
 
   <div id="section1" class="cards-instructions mb-4">
     <div class="card-step">
@@ -60,16 +72,19 @@
 
 <div class="main">
   <section id="section2">
+
     <div class="p-5 mb-4 bg-light rounded-3" style= "text-align:center">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Maximize your travel efficiency. Use myRoutes.</h1>
         <p class="fs-4 mb-5">Fed up of not being able to save your routes on GoogleMaps? Join our community of users to maximize your travel efficiency. From storing your routes on our website to viewing your saved routes, we've got you sorted!</p>
+        <button class="btn btn-primary btn-lg" type="button">Begin your journey</button>
       </div>
-      <%= link_to "Begin your journey", routes_path, class: "btn btn-primary btn-lg" %>
     </div>
   </section>
 </div>
 
+
+<body>
 
     <!--Testimonials------------------->
 <section id="testimonials">
@@ -205,5 +220,5 @@
   const gif = document.getElementById("gif");
   setInterval(function(){
     gif.src = "assets/map_animated.gif"
-  }, 6000);
+  }, 6);
 </script>
