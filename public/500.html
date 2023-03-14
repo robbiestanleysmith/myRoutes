@@ -7,79 +7,82 @@
       <h3>Server Error</h3>
       <h2>It's not you, it's me.</h2>
       <!-- use window.history.back(); to go back -->
-      <button>Go Back</button>
+      <a href="http://localhost:3000/">
+        <button>Go Back</button>
+      </a>
     </div>
+
+
     <style>
-
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      background: linear-gradient(#111, #333, #111);
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: #eee;
-      position: relative;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .message {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-
-      h1, h2, h3 {
+      html,
+      body {
+        height: 100%;
         margin: 0;
-        line-height: .8;
       }
 
-      h2, h3 {
-        font-weight: 300;
-        color: $light-text-color;
+      body {
+        background: linear-gradient(#111, #333, #111);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #eee;
+        position: relative;
+        font-family: 'Roboto', sans-serif;
       }
 
-      h1 {
-        font-weight: 700;
-        color: $dark-text-color;
-        font-size: 8em;
-      }
+      .message {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
 
-      h2 {
-        margin: 30px 0;
-      }
+        h1, h2, h3 {
+          margin: 0;
+          line-height: .8;
+        }
 
-      h3 {
-        font-size: 2.5em;
-      }
+        h2, h3 {
+          font-weight: 300;
+          color: $light-text-color;
+        }
 
-      h4 {
-        display: inline-block;
-        margin: 0 15px;
-      }
+        h1 {
+          font-weight: 700;
+          color: $dark-text-color;
+          font-size: 8em;
+        }
 
-      button {
-        background: transparent;
-        border: 2px solid $light-text-color;
-        color: $light-text-color;
-        padding: 5px 15px;
-        font-size: 1.25em;
-        transition: all 0.15s ease;
-        border-radius: 3px;
-      }
+        h2 {
+          margin: 30px 0;
+        }
 
-      button:hover {
-        background: $dark-text-color;
-        border: 2px solid $dark-text-color;
-        color: #111;
-        cursor: pointer;
-        transform: scale(1.05);
+        h3 {
+          font-size: 2.5em;
+        }
+
+        h4 {
+          display: inline-block;
+          margin: 0 15px;
+        }
+
+        button {
+          background: transparent;
+          border: 2px solid $light-text-color;
+          color: $light-text-color;
+          padding: 5px 15px;
+          font-size: 1.25em;
+          transition: all 0.15s ease;
+          border-radius: 3px;
+        }
+
+        button:hover {
+          background: $dark-text-color;
+          border: 2px solid $dark-text-color;
+          color: #111;
+          cursor: pointer;
+          transform: scale(1.05);
+        }
       }
-    }
     </style>
   </head>
 
