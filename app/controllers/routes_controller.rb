@@ -124,7 +124,7 @@ class RoutesController < ApplicationController
       route.google_url = url
       route.save
     else
-      flash.alert = "At least two route destinations are needed"
+      puts "Well, that didnt work"
     end
   end
 

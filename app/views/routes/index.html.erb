@@ -28,6 +28,8 @@
               <%= link_to route_path(route) do %>
                 <% if route.photo.attached? %>
                   <%= cl_image_tag route.photo.key, class: "avatar-bordered-large" %>
+                <% else %>
+                  <%= image_tag "city_placeholder.jpg", class: "avatar-bordered-large" %>
                 <% end %>
               <% end %>
             </div>
