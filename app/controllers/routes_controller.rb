@@ -46,7 +46,8 @@ class RoutesController < ApplicationController
     @markers = @route.destinations.geocoded.map do |destination|
       {
         lat: destination.latitude,
-        lng: destination.longitude
+        lng: destination.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
