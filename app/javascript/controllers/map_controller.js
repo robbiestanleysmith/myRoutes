@@ -10,9 +10,7 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     const markersarray = this.markersValue
-
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -36,7 +34,6 @@ export default class extends Controller {
       }
       i += 1
     })
-
     this.#fetchRoute(fetchQueryString)
 
   }
