@@ -31,6 +31,14 @@ class RouteDestinationsController < ApplicationController
     @route_destination.update(route_destination_params)
   end
 
+  def move
+    @route_destination = RouteDestination.find(params[:id])
+    @route_destination.insert_at(params[:position].to_i)
+
+    @route = Route.find(params[:route_id])
+    # @route.destinations
+  end
+
   # def destroy
   #   raise
   #   @route_destination = RouteDestination.find(params[:id])
@@ -40,6 +48,6 @@ class RouteDestinationsController < ApplicationController
   private
 
   def route_destination_params
-    params.require(:route_destination)
+    params.require(:route_destination).permit(:position)
   end
 end

@@ -23,10 +23,11 @@ export default class extends Controller {
 
     // 1. If POI (check this really works)
     if (event.result["id"].includes("poi")) {
+      console.log(event.result)
 
       // Coordinates
-      this.latitudeTarget.value = event.result["geometry"]["coordinates"][1]
-      this.longitudeTarget.value = event.result["geometry"]["coordinates"][0]
+      this.latitudeTarget.value = event.result["geometry"]["coordinates"][0]
+      this.longitudeTarget.value = event.result["geometry"]["coordinates"][1]
 
       // Title
       this.titleTarget.value = event.result["text"]
@@ -46,14 +47,9 @@ export default class extends Controller {
       })
       this.cityTarget.value = city === null ? district : city
     }
-    // 2. ADD LOGIC FOR ADDRESSES
     else {
       console.log("Else loop")
     }
-
-
-    // 3. Calculate new total time and distance
-    
   }
 
   #clearInputValue() {
