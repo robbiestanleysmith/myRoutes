@@ -27,16 +27,14 @@ export default class extends Controller {
     let id = event.item.dataset.id;
     console.log(id);
 
-    console.log(this.element.dataset.count);
+    // console.log(this.element.dataset.count);
 
     let data = new FormData();
 
     if (event.newIndex === 0) {
       data.append("position", 1);
-    } else if (event.newIndex > this.element.dataset.count * 2) {
-      data.append("position", this.element.dataset.count);
     } else {
-      data.append("position", event.newIndex / 2 + 1);
+      data.append("position", event.newIndex + 1);
     }
 
     for (const [key, value] of data.entries()) {
@@ -53,7 +51,7 @@ export default class extends Controller {
       data: data,
       success: function () {
         console.log("Try to get a updated map.");
-        document.location.reload();
+        // document.location.reload();
 
         // fetch(`/routes/${routeId}`)
         //   .then((res) => res.json())
