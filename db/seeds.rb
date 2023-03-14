@@ -42,27 +42,27 @@ routepic1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286
 route1.photo.attach(io: routepic1, filename: "rp1.jpg", content_type: "image/jpg")
 
 
-dest1 = Destination.create!(latitude: 51.508530, longitude: -0.076132, title: "Tower of London", user: user1)
+dest1 = Destination.create!(latitude: 51.508530, longitude: -0.076132, title: "Tower of London", user: user1, city: "London")
 RouteDestination.create!(route: route1, destination: dest1, position: 1)
 destpic1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/toweroflondon_wowyrp.jpg")
 dest1.photo.attach(io: destpic1, filename: "dp1.jpg", content_type: "image/jpg")
 
-dest2 = Destination.create!(latitude: 51.507595, longitude: -0.099356, title: "Tate Modern", user: user1)
+dest2 = Destination.create!(latitude: 51.507595, longitude: -0.099356, title: "Tate Modern", user: user1, city: "London")
 RouteDestination.create!(route: route1, destination: dest2, position: 2)
 destpic2 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/toweroflondon_wowyrp.jpg")
 dest2.photo.attach(io: destpic2, filename: "dp2.jpg", content_type: "image/jpg")
 
-dest3 = Destination.create!(latitude: 51.503399, longitude: -0.119519, title: "London Eye", user: user1)
+dest3 = Destination.create!(latitude: 51.503399, longitude: -0.119519, title: "London Eye", user: user1, city: "London")
 RouteDestination.create!(route: route1, destination: dest3, position: 3)
 destpic3 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/londoneye_yctsw7.jpg")
 dest3.photo.attach(io: destpic3, filename: "dp3.jpg", content_type: "image/jpg")
 
-dest4 = Destination.create!(latitude: 51.510357, longitude: -0.116773, title: "Big Ben", user: user1)
+dest4 = Destination.create!(latitude: 51.510357, longitude: -0.116773, title: "Big Ben", user: user1, city: "London")
 RouteDestination.create!(route: route1, destination: dest4, position: 4)
 destpic4 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/bigben_vfbvfi.jpg")
 dest4.photo.attach(io: destpic4, filename: "dp4.jpg", content_type: "image/jpg")
 
-dest5 = Destination.create!(latitude: 51.501476, longitude: -0.140634, title: "Buckingham Palace", user: user1)
+dest5 = Destination.create!(latitude: 51.501476, longitude: -0.140634, title: "Buckingham Palace", user: user1, city: "London")
 RouteDestination.create!(route: route1, destination: dest5, position: 5)
 destpic5 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/buckinghampalace_usp6iw.jpg")
 dest5.photo.attach(io: destpic5, filename: "dp5.jpg", content_type: "image/jpg")
@@ -73,26 +73,26 @@ route2 = Route.create!(title: "Exploring Lisbon", user: user1, distance: rand(1.
 routepic2 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/lisbon_boahbs.jpg")
 route2.photo.attach(io: routepic2, filename: "rp2.jpg", content_type: "image/jpg")
 
-dest6 = Destination.create!(latitude: 38.712139, longitude: -9.140246, title: "Convento do Carmo", user: user1)
+dest6 = Destination.create!(latitude: 38.712139, longitude: -9.140246, title: "Convento do Carmo", user: user1, city: "Lisbon")
 RouteDestination.create!(route: route2, destination: dest6, position: 1)
-dest7 = Destination.create!(latitude: 38.71077, longitude: -9.145844, title: "Elevador da Bica", user: user1)
+dest7 = Destination.create!(latitude: 38.71077, longitude: -9.145844, title: "Elevador da Bica", user: user1, city: "Lisbon")
 RouteDestination.create!(route: route2, destination: dest7, position: 2)
-dest8 = Destination.create!(latitude: 38.710648, longitude: -9.143312, title: "Praça Luís de Camões", user: user1)
+dest8 = Destination.create!(latitude: 38.710648, longitude: -9.143312, title: "Praça Luís de Camões", user: user1, city: "Lisbon")
 RouteDestination.create!(route: route2, destination: dest8, position: 3)
-dest9 = Destination.create!(latitude: 38.713909, longitude: -9.133476, title: "Castelo de São Jorge", user: user1)
+dest9 = Destination.create!(latitude: 38.713909, longitude: -9.133476, title: "Castelo de São Jorge", user: user1, city: "Lisbon")
 RouteDestination.create!(route: route2, destination: dest9, position: 4)
 
 route3 = Route.create!(title: "Paris architecture", user: user1, distance: rand(1.1..9.8).round(2), time: rand(10..59), city: "Paris")
 routepic3 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286627/eiffeltower_itl1at.png")
 route3.photo.attach(io: routepic3, filename: "rp3.jpg", content_type: "image/png")
 
-dest10 = Destination.create!(latitude: 48.858093, longitude: 2.294694, title: "Eiffel Tower", user: user1)
+dest10 = Destination.create!(latitude: 48.858093, longitude: 2.294694, title: "Eiffel Tower", user: user1, city: "Paris")
 RouteDestination.create!(route: route3, destination: dest10, position: 1)
-dest11 = Destination.create!(latitude: 48.860294, longitude: 2.338629, title: "Musée du Louvre", user: user1)
+dest11 = Destination.create!(latitude: 48.860294, longitude: 2.338629, title: "Musée du Louvre", user: user1, city: "Paris")
 RouteDestination.create!(route: route3, destination: dest11, position: 2)
-dest12 = Destination.create!(latitude: 48.860642, longitude: 2.352245, title: "Centre Pompidou", user: user1)
+dest12 = Destination.create!(latitude: 48.860642, longitude: 2.352245, title: "Centre Pompidou", user: user1, city: "Paris")
 RouteDestination.create!(route: route3, destination: dest12, position: 3)
-dest13 = Destination.create!(latitude: 48.887691, longitude: 2.340607, title: "Sacré Coeur de Montmartre", user: user1)
+dest13 = Destination.create!(latitude: 48.887691, longitude: 2.340607, title: "Sacré Coeur de Montmartre", user: user1, city: "Paris")
 RouteDestination.create!(route: route3, destination: dest13, position: 4)
 
 
