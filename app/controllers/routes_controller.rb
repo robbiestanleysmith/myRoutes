@@ -9,11 +9,11 @@ class RoutesController < ApplicationController
 
     route_destinations = @route.route_destinations.order(position: :asc).map { |route_destination| route_destination.destination }
 
-    @markers = route_destinations.map do |destination|
-    # @markers = @route.destinations.geocoded.map do |destination|
+    @markers = @route.destinations.geocoded.map do |destination|
       {
         lat: destination.latitude,
-        lng: destination.longitude
+        lng: destination.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
 

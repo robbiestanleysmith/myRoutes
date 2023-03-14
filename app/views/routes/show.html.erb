@@ -61,16 +61,16 @@
       </div>
 
       <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
-        <% @route.destinations.each_with_index do |destination, index| %>
+        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destinations, index| %>
         <div class="card-destination my-2">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
-            <span class="destination-title"><%= destination.title %></span><br>
-            <% if destination.title == "Custom location" %>
-              <span class="destination-address"><%= destination.address%></span>
+            <span class="destination-title"><%= route_destinations.destination.title %></span><br>
+            <% if route_destinations.destination.title == "Custom location" %>
+              <span class="destination-address"><%= route_destinations.destination.address%></span>
             <% else %>
-              <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
+              <span class="destination-address"><%= route_destinations.destination.address.split(",")[1..-1].join(", ") %></span>
             <% end %>
           </div>
         </div>
