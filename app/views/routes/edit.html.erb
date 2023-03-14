@@ -65,7 +65,7 @@
             </div>
             <div class="destination-text">
               <%= route_destination.position %>
-              <span class="destination-title"><%= route_destination.destination.title %></span><br>
+              <span class="destination-title"><%= route_destination.destination.title %></span><%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(route_destination.destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %><br>
               <span class="destination-address"><%= route_destination.destination.address %></span>
             </div>
           </div>

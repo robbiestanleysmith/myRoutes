@@ -26,8 +26,8 @@ export default class extends Controller {
     // Get coordinates, address, poi & city from event.result. Store them in params and send to create method
 
     // Coordinates
-    this.latitudeTarget.value = event.result["geometry"]["coordinates"][0]
-    this.longitudeTarget.value = event.result["geometry"]["coordinates"][1]
+    this.latitudeTarget.value = event.result["geometry"]["coordinates"][1]
+    this.longitudeTarget.value = event.result["geometry"]["coordinates"][0]
 
     // City
     let city = null

@@ -51,7 +51,7 @@ export default class extends Controller {
       data: data,
       success: function () {
         console.log("Try to get a updated map.");
-        // document.location.reload();
+        document.location.reload();
 
         // fetch(`/routes/${routeId}`)
         //   .then((res) => res.json())
