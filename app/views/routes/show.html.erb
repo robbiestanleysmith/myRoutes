@@ -11,51 +11,12 @@
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
         <div class="btn btn-primary btn-lg" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share your route</a></div>
-        </div>
+      </div>
     </div>
 
     <div class="route-title mt-2 mx-3">
       <h1 class="text-center"><strong><%= @route.title %></strong></h1>
     </div>
-
-    <head>
-      <link rel="stylesheet" href="style.css">
-      <script src="https://kit.fontawesome.com/704ff50790.js"
-        crossorigin="anonymous"></script>
-      <script src="index.js"></script>
-    </head>
-
-    <body>
-      <div class="main_box">
-        <input id="share_button">
-        <label for="share_button">
-          <span class="sharebtn" >
-            <i class="far fa-share-square"></i>
-          </span>
-        </label>
-        <div class="sm_list">
-          <a href="#" class="facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" class="linkedin">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="discord">
-            <i class="fab fa-discord"></i>
-          </a>
-          <a href="#" class="whatsapp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-          <a href="#" class="slack">
-            <i class="fab fa-slack"></i>
-          </a>
-        </div>
-      </div>
-    </body>
-  </div>
 
   <div class="route-title my-1">
     <h1><strong><%= @route.title %></strong></h1>
@@ -84,32 +45,27 @@
               <span class="destination-title"><%= route_destination.destination.title %></span>
               <span class="destination-address"><%= route_destination.destination.address %></span>
             </div>
-
           </div>
         <% end %>
       </div>
 
       <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
+
         <% @route.destinations.each_with_index do |destination, index| %>
         <div class="card-destination my-2">
           <div class="destination-bubble">
           </div>
           <div class="destination-text">
             <span class="destination-title"><%= destination.title %></span><br>
-            <% if destination.address != nil %>
-            <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
+            <% if destination.title == "Custom location" %>
+              <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
+            <% else %>
+              <span class="destination-address"><%= destination.address%></span>
             <% end %>
           </div>
         </div>
-        <% unless index == (@route.destinations.length - 1) %>
-          <div class="bubble-line-connection">
-          </div>
-          <% unless index == (@route.destinations.length - 1) %>
-            <div class="bubble-line-connection">
-            </div>
-          <% end %>
         <% end %>
-      </div>
+
     </div>
 
     <div class="destination-map p-1">
@@ -118,7 +74,6 @@
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <%# render "shared/map" %>
     </div>
 
   </div>
