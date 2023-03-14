@@ -1,6 +1,15 @@
-<div class="container">
-  <div class="page-actions">
-    <div class="page-actions-back">
+<div class="container-nik">
+
+  <%# Left side of page %>
+  <div class="route-content">
+    <div class="page-action m-3">
+      <div class="info-and-back">
+        <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+      </div>
+      <div class="page-action-buttons">
+        <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
+        <%= link_to '<i class="fa-solid fa-floppy-disk"></i>'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+      </div>
     </div>
     <div class="page-actions-sharing my-2">
       <i class="fa-solid fa-arrow-up-from-bracket px-3"></i>

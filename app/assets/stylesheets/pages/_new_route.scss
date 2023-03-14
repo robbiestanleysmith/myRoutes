@@ -1,4 +1,6 @@
-.container {
+.container-nik {
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 90vw;
   margin: 2px auto;
   .page-actions {
@@ -19,11 +21,20 @@
 
 }
 
-.route-title {
-  h1 {
-    font-size: 28px;
-  }
-  .route-title-input {
+
+
+.route-destinations h2 {
+  font-size: 24px;
+}
+
+// Left side of route page
+.route-content {
+  width: 50%;
+  margin-right: 5px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  .page-action {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
