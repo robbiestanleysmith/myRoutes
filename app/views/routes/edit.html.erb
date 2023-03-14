@@ -58,18 +58,15 @@
         <% end %>
       </div>
 
-      <div class="route-destinations-display" data-controller="sortable" data-sortable-target="results">
-        <% @route.destinations.each_with_index do |destination, index| %>
-          <div class="card-destination my-2">
+     <div class="route-destinations-display" data-controller="sortable" data-sortable-url="/routes/<%= @route.id %>/route_destinations/:id/move" data-count="<%= @route.route_destinations.count %>" data-route-destinations-count="<%= @route.route_destinations.count %>" data-route-id="<%= @route.id %>">
+        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
+          <div class="card-destination my-4" data-id="<%= route_destination.id %>" data-sortable-target="results">
             <div class="destination-bubble">
             </div>
             <div class="destination-text">
-              <span class="destination-title"><%= destination.title %></span> <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%><br>
-              <% if destination.title == "Custom location" %>
-                <span class="destination-address"><%= destination.address%></span>
-              <% else %>
-                <span class="destination-address"><%= destination.address.split(",")[1..-1].join(", ") %></span>
-              <% end %>
+              <%= route_destination.position %>
+              <span class="destination-title"><%= route_destination.destination.title %></span><br>
+              <span class="destination-address"><%= route_destination.destination.address %></span>
             </div>
           </div>
         <% end %>
