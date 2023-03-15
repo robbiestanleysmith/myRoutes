@@ -16,7 +16,7 @@ user1.photo.attach(io: avatar1, filename: "av1.jpg", content_type: "image/png")
 puts "Seeding routes and destinations..."
 
 
-route1 = Route.create!(title: "London Thames walking tour", user: user1, distance: rand(1.1..9.8).round(2), time: rand(10..59), city: "London")
+route1 = Route.create!(title: "London Thames walking tour", user: user1, distance: 5.63, time: 71, city: "London")
 routepic1 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/london_zas6np.jpg")
 route1.photo.attach(io: routepic1, filename: "rp1.jpg", content_type: "image/jpg")
 
@@ -48,20 +48,20 @@ dest5.photo.attach(io: destpic5, filename: "dp5.jpg", content_type: "image/jpg")
 
 
 
-route2 = Route.create!(title: "Exploring Lisbon", user: user1, distance: rand(1.1..9.8).round(2), time: rand(10..59), city: "Lisbon")
+route2 = Route.create!(title: "Exploring Lisbon", user: user1, distance: 4.8, time: 65, city: "Lisbon")
 routepic2 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286626/lisbon_boahbs.jpg")
 route2.photo.attach(io: routepic2, filename: "rp2.jpg", content_type: "image/jpg")
 
 dest6 = Destination.create!(latitude: 38.712139, longitude: -9.140246, title: "Convento do Carmo", user: user1, city: "Lisbon", address: "Largo do Carmo, 1200-092 Lisboa, Portugal")
 RouteDestination.create!(route: route2, destination: dest6, position: 1)
-dest7 = Destination.create!(latitude: 38.71077, longitude: -9.145844, title: "Elevador da Bica", user: user1, city: "Lisbon", address: "Rua de S. Paulo 234, 1200-109 Lisboa, Portugal")
+dest7 = Destination.create!(latitude: 38.711124, longitude: -9.127608, title: "Museu do Fado", user: user1, city: "Lisbon", address: "Largo do Chafariz de Dentro 1, 1100-139 Lisboa, Portugal")
 RouteDestination.create!(route: route2, destination: dest7, position: 2)
 dest8 = Destination.create!(latitude: 38.710648, longitude: -9.143312, title: "Praça Luís de Camões", user: user1, city: "Lisbon", address: "Praça Luís de Camões, 1200-243 Lisboa, Portugal")
 RouteDestination.create!(route: route2, destination: dest8, position: 3)
 dest9 = Destination.create!(latitude: 38.713909, longitude: -9.133476, title: "Castelo de São Jorge", user: user1, city: "Lisbon", address: "R. de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal")
 RouteDestination.create!(route: route2, destination: dest9, position: 4)
 
-route3 = Route.create!(title: "Paris architecture", user: user1, distance: rand(1.1..9.8).round(2), time: rand(10..59), city: "Paris")
+route3 = Route.create!(title: "Paris architecture", user: user1, distance: 8.7, time: 112, city: "Paris")
 routepic3 = URI.open("https://res.cloudinary.com/dcuj8efm3/image/upload/v1678286627/eiffeltower_itl1at.png")
 route3.photo.attach(io: routepic3, filename: "rp3.jpg", content_type: "image/png")
 
