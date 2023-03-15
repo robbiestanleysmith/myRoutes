@@ -8,7 +8,6 @@
       </div>
       <div class="page-action-buttons">
         <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
-        <%= link_to '<i class="fa-solid fa-floppy-disk"></i>'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
       </div>
     </div>
 
@@ -21,61 +20,74 @@
 
       <div class="route-destinations-form mb-3 mx-3">
           <div class="form-whole">
+              <%= simple_form_for [@route, @destination], html: { class: 'form-inline w-100 d-flex flex-row-reverse' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
+                <%# <div class="form-left"> %>
+                  <%= f.input :title,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
+                        label: false,
+                        as: :hidden %>
 
-            <div class="form-left">
-              <%= simple_form_for [@route, @destination], html: { class: 'form-inline' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
-              <%= f.input :title,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
-                    label: false,
-                    as: :hidden %>
+                  <%= f.input :latitude,
+                      input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
+                      label: false,
+                      as: :hidden %>
 
-              <%= f.input :latitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
-                  label: false,
-                  as: :hidden %>
+                  <%= f.input :longitude,
+                      input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
+                      label: false,
+                      as: :hidden %>
 
-              <%= f.input :longitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
-                  label: false,
-                  as: :hidden %>
+                  <%= f.input :city,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }},
+                        label: false,
+                        as: :hidden %>
 
-              <%= f.input :city,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }},
-                    label: false,
-                    as: :hidden %>
+                  <%= f.input :address,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
+                        label: false
+                        %>
+                <%# </div> %>
 
-              <%= f.input :address,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
-                    label: false
-                    %>
-            </div>
-
-            <div class="form-right">
-              <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
-            </div>
-
-          </div>
-        <% end %>
-      </div>
-
-     <div class="route-destinations-display" data-controller="sortable" data-sortable-url="/routes/<%= @route.id %>/route_destinations/:id/move" data-count="<%= @route.route_destinations.count %>" data-route-destinations-count="<%= @route.route_destinations.count %>" data-route-id="<%= @route.id %>">
-        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
-          <div class="card-destination my-4" data-id="<%= route_destination.id %>" data-sortable-target="results">
-            <div class="destination-bubble">
-            </div>
-            <div class="destination-text">
-              <%= route_destination.position %>
-              <span class="destination-title"><%= route_destination.destination.title %></span><%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(route_destination.destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %><br>
-              <% if route_destination.destination.title == "Custom location" %>
-                <span class="destination-address"><%= route_destination.destination.address%></span>
-              <% else %>
-                <span class="destination-address"><%= route_destination.destination.address.split(",")[1..-1].join(", ") %></span>
+                <%# <div class="form-right"> %>
+                  <%= f.submit "Add", class: "btn btn-outline-primary mx-2" %>
+                <%# </div> %>
               <% end %>
-
-            </div>
           </div>
+      </div>
+
+      <div class="route-destinations-display" data-controller="sortable" data-sortable-url="/routes/<%= @route.id %>/route_destinations/:id/move" data-count="<%= @route.route_destinations.count %>" data-route-destinations-count="<%= @route.route_destinations.count %>" data-route-id="<%= @route.id %>">
+        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
+
+          <div class="card-destination card-border" data-id="<%= route_destination.id %>" data-sortable-target="results">
+
+            <div class="destination-drag-icon">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="destination-bubble">
+              <span class="dest-position"><%= route_destination.position %></span>
+            </div>
+
+            <div class="destination-text">
+              <div class="destination-title">
+                <%= route_destination.destination.title %>  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(route_destination.destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+              </div>
+              <% if route_destination.destination.title == "Custom location" %>
+                <div class="destination-address">
+                  <%= route_destination.destination.address%>
+                </div>
+              <% else %>
+                <div class="destination-address">
+                  <%= route_destination.destination.address.split(",")[1..-1].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+
         <% end %>
       </div>
+
     </div>
   </div>
 

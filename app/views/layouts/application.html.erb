@@ -46,11 +46,13 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <div class= 'min-height' >
-      <%= yield %>
+    <div class="home-container">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <div>
+        <%= yield %>
+      </div>
+      <%= render "shared/footer" %>
     </div>
-    <%= render "shared/footer" %>
   </body>
 </html>

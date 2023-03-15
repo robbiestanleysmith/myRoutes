@@ -12,70 +12,83 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected Map JS");
-
     mapboxgl.accessToken = this.apiKeyValue;
 
+    // 1. Convert markers
     const markersarray = this.markersValue;
 
+    console.log("Markers array");
+    console.log(markersarray);
+
+    // Sort markers to be in correct order and return hash {1: {lat, lng}}
+    const sortedmarkers = {}
+    markersarray.forEach((marker) => {
+      sortedmarkers[marker.pos] = {lat: marker.lat, lng: marker.lng, marker_html: marker.marker_html}
+    })
+    console.log("Sorted markers")
+    console.log(sortedmarkers)
+
+
+    // 2. Create map and add markers
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       zoom: 13,
     });
 
-    this.#addMarkersToMap();
-    this.#fitMapToMarkers();
+    this.#addMarkersToMap(sortedmarkers);
+    this.#fitMapToMarkers(sortedmarkers);
 
-    console.log(markersarray);
 
+    // 3. Add route lines to map
     let fetchQueryString =
-      "https://api.mapbox.com/directions/v5/mapbox/walking/";
+      "https://api.mapbox.com/directions/v5/mapbox/cycling/";
 
     let i = 1;
-    markersarray.forEach((marker) => {
-      if (i == markersarray.length) {
+    for (const key in sortedmarkers) {
+
+      if (i == Object.keys(sortedmarkers).length) {
         fetchQueryString =
           fetchQueryString +
-          marker.lng +
+          sortedmarkers[key].lng +
           "," +
-          marker.lat +
-          `?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+          sortedmarkers[key].lat +
+          `?exclude=ferry&geometries=geojson&access_token=${mapboxgl.accessToken}`;
       } else {
         fetchQueryString =
-          fetchQueryString + marker.lng + "," + marker.lat + ";";
+          fetchQueryString + sortedmarkers[key].lng + "," + sortedmarkers[key].lat + ";";
       }
       i += 1;
-    });
+    };
+    console.log(fetchQueryString)
 
     this.#fetchRoute(fetchQueryString);
   }
 
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
+  #addMarkersToMap(sortedmarkers) {
 
-      // const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
+    for (const key in sortedmarkers) {
+      console.log("I am here")
 
-      // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
-      customMarker.innerHTML = marker.marker_html
+      customMarker.innerHTML = sortedmarkers[key].marker_html
 
       new mapboxgl.Marker(customMarker)
-        .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
+        .setLngLat([sortedmarkers[key].lng, sortedmarkers[key].lat])
         .addTo(this.map);
-    });
+    };
   }
 
-  #fitMapToMarkers() {
+  #fitMapToMarkers(sortedmarkers) {
     const bounds = new mapboxgl.LngLatBounds();
 
     // Extend the 'LngLatBounds' to include every coordinate in the bounds result.
-    this.markersValue.forEach((marker) => {
-      bounds.extend([marker.lng, marker.lat]);
-    });
+    for (const key in sortedmarkers) {
+      bounds.extend([sortedmarkers[key].lng, sortedmarkers[key].lat]);
+    }
 
     this.map.fitBounds(bounds, {
-      padding: 40,
+      padding: 80,
       duration: 0,
     });
   }

@@ -7,7 +7,7 @@
         <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, routes_path(), class: "btn btn-outline-primary" %>
       </div>
       <div class="page-action-buttons">
-        <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
+        <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
         <div data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size="" style="margin-left:45px">
@@ -19,27 +19,34 @@
     </div>
 
 
-    <div class="route-title mt-2 mx-3">
-      <h1 class="text-center"><strong><%= @route.title %></strong></h1>
+    <div class="route-title mt-2 mx-3" style="padding:25px";>
+      <h1 class="text-center"><strong><%= @route.title %></strong>  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), style: "padding-left:10px;margin-right:15px;" %></h1>
     </div>
 
     <%# Search field & destination display %>
-    <div class="route-destination my-3">
+    <div class="route-destination">
 
       <div class="route-destinations-display">
-        <% @route_destinations_ordered.each_with_index do |route_destination, index| %>
-        <div class="card-destination my-2">
-          <div class="destination-bubble">
+        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
+
+          <div class="card-destination" data-id="<%= route_destination.id %>" data-sortable-target="results">
+            <div class="destination-drag-icon">
+            </div>
+            <div class="destination-bubble">
+              <span class="dest-position"><%= route_destination.position %></span>
+            </div>
+            <div class="destination-text">
+              <div class="destination-title">
+                <%= route_destination.destination.title %>
+              </div>
+              <% if route_destination.destination.title == "Custom location" %>
+                <div class="destination-address"><%= route_destination.destination.address%></div>
+              <% else %>
+                <div class="destination-address"><%= route_destination.destination.address.split(",")[1..-1].join(", ") %></div>
+              <% end %>
+            </div>
           </div>
-          <div class="destination-text">
-            <span class="destination-title"><%= route_destination.title %></span><br>
-            <% if route_destination.title == "Custom location" %>
-              <span class="destination-address"><%= route_destination.address%></span>
-            <% else %>
-              <span class="destination-address"><%= route_destination.address.split(",")[1..-1].join(", ") %></span>
-            <% end %>
-          </div>
-        </div>
+
         <% end %>
       </div>
     </div>
@@ -47,11 +54,9 @@
 
   <%# Right side of page %>
   <div class="destination-map-and-specs">
-
     <div class="destination-specs">
-      <p>Mode: Walking<br>
-      <p class="distance">Distance: <%= @route.distance %> km</p>
-      <p class="duration">Time: <%= @route.time %> mins</p>
+      <p>Distance: <%= @route.distance %> km<br>
+      Time: <%= @route.time %> mins</p>
     </div>
 
     <div id="map"
