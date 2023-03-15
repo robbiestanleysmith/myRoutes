@@ -20,8 +20,7 @@
 
 
     <div class="route-title mt-2 mx-3" style="padding:25px";>
-      <h1 class="text-center"><strong><%= @route.title %></strong></h1>
-      <%= link_to '<i class="fa-solid fa-pen-to-square"></i> Edit'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary", style: "margin-left:225px;" %>
+      <h1 class="text-center"><strong><%= @route.title %></strong><%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary", style: "margin-right:10px;" %></h1>
     </div>
 
     <%# Search field & destination display %>
