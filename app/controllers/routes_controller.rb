@@ -47,6 +47,7 @@ class RoutesController < ApplicationController
   def edit
     @route = Route.find(params[:id])
     @destination = Destination.new
+
     @route_destinations_ordered = @route.route_destinations.order(position: :asc).map { |route_destination| route_destination.destination }
 
     # If the current route has more than 2 destinations, update the routes google maps link
@@ -56,9 +57,10 @@ class RoutesController < ApplicationController
 
     @markers = @route.destinations.geocoded.map do |destination|
       {
+        pos: @route.route_destinations.where(destination: destination).first.position,
         lat: destination.latitude,
         lng: destination.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker#{@route.route_destinations.where(destination: destination).first.position}")
       }
     end
   end
