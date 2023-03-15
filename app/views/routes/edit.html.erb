@@ -53,8 +53,8 @@
               <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
             </div>
 
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
      <div class="route-destinations-display" data-controller="sortable" data-sortable-url="/routes/<%= @route.id %>/route_destinations/:id/move" data-count="<%= @route.route_destinations.count %>" data-route-destinations-count="<%= @route.route_destinations.count %>" data-route-id="<%= @route.id %>">
