@@ -24,22 +24,29 @@
     </div>
 
     <%# Search field & destination display %>
-    <div class="route-destination my-3">
+    <div class="route-destination">
 
       <div class="route-destinations-display">
-        <% @route_destinations_ordered.each_with_index do |route_destination, index| %>
-        <div class="card-destination my-2">
-          <div class="destination-bubble">
+        <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
+
+          <div class="card-destination" data-id="<%= route_destination.id %>" data-sortable-target="results">
+            <div class="destination-drag-icon">
+            </div>
+            <div class="destination-bubble">
+              <span class="dest-position"><%= route_destination.position %></span>
+            </div>
+            <div class="destination-text">
+              <div class="destination-title">
+                <%= route_destination.destination.title %>
+              </div>
+              <% if route_destination.destination.title == "Custom location" %>
+                <div class="destination-address"><%= route_destination.destination.address%></div>
+              <% else %>
+                <div class="destination-address"><%= route_destination.destination.address.split(",")[1..-1].join(", ") %></div>
+              <% end %>
+            </div>
           </div>
-          <div class="destination-text">
-            <span class="destination-title"><%= route_destination.title %></span><br>
-            <% if route_destination.title == "Custom location" %>
-              <span class="destination-address"><%= route_destination.address%></span>
-            <% else %>
-              <span class="destination-address"><%= route_destination.address.split(",")[1..-1].join(", ") %></span>
-            <% end %>
-          </div>
-        </div>
+          
         <% end %>
       </div>
     </div>
