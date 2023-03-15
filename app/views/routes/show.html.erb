@@ -20,7 +20,7 @@
 
 
     <div class="route-title mt-2 mx-3" style="padding:25px";>
-      <h1 class="text-center"><strong><%= @route.title %></strong><%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary", style: "margin-right:10px;" %></h1>
+      <h1 class="text-center"><strong><%= @route.title %></strong>  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), style: "padding-left:10px;margin-right:15px;" %></h1>
     </div>
 
     <%# Search field & destination display %>
@@ -46,7 +46,7 @@
               <% end %>
             </div>
           </div>
-          
+
         <% end %>
       </div>
     </div>
@@ -56,9 +56,8 @@
   <div class="destination-map-and-specs">
 
     <div class="destination-specs">
-      <p>Mode: Walking<br>
-      Distance: <%= @route.distance %><br>
-      Time: <%= @route.time %></p>
+      <p>Distance: <%= @route.distance %> km<br>
+      Time: <%= @route.time %> mins</p>
     </div>
 
     <div id="map"

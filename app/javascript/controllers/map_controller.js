@@ -40,7 +40,7 @@ export default class extends Controller {
 
     // 3. Add route lines to map
     let fetchQueryString =
-      "https://api.mapbox.com/directions/v5/mapbox/walking/";
+      "https://api.mapbox.com/directions/v5/mapbox/cycling/";
 
     let i = 1;
     for (const key in sortedmarkers) {
@@ -51,7 +51,7 @@ export default class extends Controller {
           sortedmarkers[key].lng +
           "," +
           sortedmarkers[key].lat +
-          `?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+          `?exclude=ferry&geometries=geojson&access_token=${mapboxgl.accessToken}`;
       } else {
         fetchQueryString =
           fetchQueryString + sortedmarkers[key].lng + "," + sortedmarkers[key].lat + ";";
