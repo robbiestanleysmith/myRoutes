@@ -12,18 +12,11 @@
           <%= link_to "Begin your journey", routes_path, class: "btn-byj btn btn-primary" %>
         </div>
 
-      <script>
-      const gif = document.getElementById("gif")
-      setInterval(function() {
-        gif.src = "assets/map_animated.gif"
-      }, 6
-      </script>
-
 
   </div>
     </div>
       </div>
-      
+
   <section class="company-heading intro-type" id="parallax-one" style="text-align:center">
     <div class="container">
       <div class="row product-title-info">
@@ -216,9 +209,11 @@
         </div>
     </div>
 </section>
-<script>
-  const gif = document.getElementById("gif");
-  setInterval(function(){
-    gif.src = "assets/map_animated.gif"
-  }, 6);
-</script>
+<%# <script>
+    const gif = document.getElementById("gif")
+    if (gif) {
+      setInterval(function() {
+        gif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
+      }, 6000);
+    }
+</script> %>

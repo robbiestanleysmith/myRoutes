@@ -30,6 +30,8 @@ export default class extends Controller {
     // console.log(this.element.dataset.count);
 
     let data = new FormData();
+    console.log("Data")
+    console.log(data)
 
     if (event.newIndex === 0) {
       data.append("position", 1);
@@ -43,6 +45,7 @@ export default class extends Controller {
 
     // * Route ID
     let routeId = this.element.dataset.routeId;
+    console.log("Route ID");
     console.log(routeId);
 
     Rails.ajax({

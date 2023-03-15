@@ -37,12 +37,11 @@
   </div>
 </div>
 
- <script>
-
-
-  <script>
+  <%# <script>
       const smallGif = document.getElementById("small-gif")
-      setInterval(function() {
-        smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
-      }, 6000);
-  </script>
+      if (smallGif) {
+        setInterval(function() {
+          smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
+        }, 6000);
+      }
+  </script> %>

@@ -1,5 +1,5 @@
 class RouteDestination < ApplicationRecord
-  acts_as_list
+  acts_as_list scope: :route
 
   belongs_to :route
   belongs_to :destination
