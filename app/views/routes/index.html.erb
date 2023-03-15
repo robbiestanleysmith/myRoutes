@@ -40,13 +40,20 @@
           <div class="route-specs px-3">
             <%= route.route_destinations.length %> stops
             <br>
-            <%= route.time %> min
+              <% if route.time.nil? %>
+                <%= 0 %> min
+              <% else %>
+                <%= route.time %> min
+              <% end %>
             <br>
-            <%= route.distance %> km
+              <% if route.distance.nil? %>
+                <%= 0 %> km
+              <% else %>
+              <%= route.distance %> km
+              <% end %>
           </div>
         </div>
       </div>
-
     <% end %>
   </div>
 </div>

@@ -1,11 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import Rails from "rails-ujs";
 
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
+    routeId: Number
   };
 
   connect() {
@@ -95,7 +97,9 @@ export default class extends Controller {
     fetch(fetchQueryString)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data)
+        // this.#addingDistanceInfo()
+        this.#sendPatch(data)
         const route = data.routes[0].geometry.coordinates;
         const geojson = {
           type: "Feature",
@@ -123,5 +127,50 @@ export default class extends Controller {
           },
         });
       });
+  }
+
+  // #addingDistanceInfo() {
+  //   const distance = document.querySelector(".distance")
+  //   const duration = document.querySelector(".duration")
+  //   console.log(distance)
+  //   console.log(duration)
+  //   console.log(data.routes[0].distance);
+  //   console.log(data.routes[0].duration);
+
+  //   distance.textContent = `Distance: ${data.routes[0].distance}`
+  //   duration.textContent = `Duration: ${data.routes[0].duration}`
+  // }
+
+  #sendPatch(data) {
+    console.log(this.routeIdValue)
+    console.log('RouteId again?')
+    const form = new FormData();
+    console
+    const DistanceInMetres = data.routes[0].distance
+    const TimeInSeconds = data.routes[0].duration
+
+    const DistanceInKm = parseFloat((DistanceInMetres / 1000).toFixed(2))
+    // const TimeInMinutes = parseFloat((TimeInSeconds / 60).toFixed(0))
+    const TimeInMinutes = Math.round((TimeInSeconds / 60))
+    console.log(TimeInSeconds)
+
+    form.append("route[distance]", DistanceInKm)
+    form.append("route[time]", TimeInMinutes)
+
+    console.log("jake")
+
+    // fetch(`/routes/${this.routeIdValue}`, {
+    //   method: "PATCH",
+    //   headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    //   body: JSON.stringify(form)
+    // })
+    //   .then((response) => console.log(response))
+    //   // .then((data) => console.log(data))
+
+    Rails.ajax({
+      url: `/routes/${this.routeIdValue}/move`,
+      type: "PATCH",
+      data: form
+    })
   }
 }

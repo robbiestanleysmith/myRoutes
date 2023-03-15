@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :routes do
+    member do
+      patch :move
+    end
     resources :destinations, except: [:destroy]
     resources :route_destinations do
       member do

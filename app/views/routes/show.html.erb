@@ -54,7 +54,6 @@
 
   <%# Right side of page %>
   <div class="destination-map-and-specs">
-
     <div class="destination-specs">
       <p>Distance: <%= @route.distance %> km<br>
       Time: <%= @route.time %> mins</p>
@@ -65,6 +64,7 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-map-markers-value="<%= @markers.to_json %>"
     ></div>
+
 
   </div>
 </div>
