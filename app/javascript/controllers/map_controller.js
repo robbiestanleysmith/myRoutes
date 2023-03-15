@@ -86,7 +86,7 @@ export default class extends Controller {
     }
 
     this.map.fitBounds(bounds, {
-      padding: 40,
+      padding: 80,
       duration: 0,
     });
   }
