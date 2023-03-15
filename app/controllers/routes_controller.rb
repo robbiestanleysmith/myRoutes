@@ -69,6 +69,12 @@ class RoutesController < ApplicationController
     @route.update(route_params)
   end
 
+  def move
+    @route = Route.find(params[:id])
+    @route.update(ajax_params)
+    
+  end
+
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
@@ -129,6 +135,10 @@ class RoutesController < ApplicationController
   end
 
   def route_params
-    params.require(:route).permit(:title, :photo, :city)
+    params.require(:route).permit(:title, :photo, :city, :distance, :time)
+  end
+
+  def ajax_params
+    params.require(:route).permit(:distance, :time)
   end
 end

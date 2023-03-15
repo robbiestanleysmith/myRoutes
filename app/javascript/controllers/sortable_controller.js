@@ -47,6 +47,7 @@ export default class extends Controller {
     let routeId = this.element.dataset.routeId;
     console.log("Route ID");
     console.log(routeId);
+    console.log(this.data.get("url").replace(":id", id))
 
     Rails.ajax({
       url: this.data.get("url").replace(":id", id),

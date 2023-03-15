@@ -83,16 +83,15 @@
   <div class="destination-map-and-specs">
 
     <div class="destination-specs">
-      <p>Mode: Walking<br>
-      Distance: <%= @route.distance %><br>
-      Time: <%= @route.time %></p>
+      <p>Distance: <%= @route.distance %> km<br>
+      Time: <%= @route.time %> mins</p>
     </div>
 
     <div id="map"
       data-controller="map"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-map-markers-value="<%= @markers.to_json %>"
+      data-map-route-id-value="<%= @route.id %>"
     ></div>
-
 
 </div>
