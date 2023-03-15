@@ -10,9 +10,10 @@
         <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
-        <div class="btn btn-primary btn-lg" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share your route</a></div>
-        </div>
+        <div class="btn btn-ouline-primary" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+      </div>
     </div>
+
 
     <div class="route-title mt-2 mx-3">
       <h1 class="text-center"><strong><%= @route.title %></strong></h1>
