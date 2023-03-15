@@ -20,47 +20,45 @@
 
       <div class="route-destinations-form mb-3 mx-3">
           <div class="form-whole">
+              <%= simple_form_for [@route, @destination], html: { class: 'form-inline w-100 d-flex flex-row-reverse' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
+                <%# <div class="form-left"> %>
+                  <%= f.input :title,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
+                        label: false,
+                        as: :hidden %>
 
-            <div class="form-left">
-              <%= simple_form_for [@route, @destination], html: { class: 'form-inline' }, data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} do |f| %>
-              <%= f.input :title,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "title" }},
-                    label: false,
-                    as: :hidden %>
+                  <%= f.input :latitude,
+                      input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
+                      label: false,
+                      as: :hidden %>
 
-              <%= f.input :latitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "latitude" }},
-                  label: false,
-                  as: :hidden %>
+                  <%= f.input :longitude,
+                      input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
+                      label: false,
+                      as: :hidden %>
 
-              <%= f.input :longitude,
-                  input_html: {data: { class: "mb-0", address_autocomplete_target: "longitude" }},
-                  label: false,
-                  as: :hidden %>
+                  <%= f.input :city,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }},
+                        label: false,
+                        as: :hidden %>
 
-              <%= f.input :city,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "city" }},
-                    label: false,
-                    as: :hidden %>
+                  <%= f.input :address,
+                        input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
+                        label: false
+                        %>
+                <%# </div> %>
 
-              <%= f.input :address,
-                    input_html: {data: { class: "mb-0", address_autocomplete_target: "address"}},
-                    label: false
-                    %>
-            </div>
-
-            <div class="form-right">
-              <%= f.submit "Add", class: "btn btn-outline-primary mx-2 mt-3" %>
-            </div>
-
-          <% end %>
-        </div>
+                <%# <div class="form-right"> %>
+                  <%= f.submit "Add", class: "btn btn-outline-primary mx-2" %>
+                <%# </div> %>
+              <% end %>
+          </div>
       </div>
 
       <div class="route-destinations-display" data-controller="sortable" data-sortable-url="/routes/<%= @route.id %>/route_destinations/:id/move" data-count="<%= @route.route_destinations.count %>" data-route-destinations-count="<%= @route.route_destinations.count %>" data-route-id="<%= @route.id %>">
         <% @route.route_destinations.order(position: :asc).each_with_index do |route_destination, index| %>
 
-          <div class="card-destination" data-id="<%= route_destination.id %>" data-sortable-target="results">
+          <div class="card-destination card-border" data-id="<%= route_destination.id %>" data-sortable-target="results">
 
             <div class="destination-drag-icon">
               <i class="fa-solid fa-bars"></i>
