@@ -7,7 +7,7 @@
         <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, routes_path(), class: "btn btn-outline-primary" %>
       </div>
       <div class="page-action-buttons">
-        <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary" %>
+        <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
         <div data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size="" style="margin-left:45px">
@@ -19,8 +19,9 @@
     </div>
 
 
-    <div class="route-title mt-2 mx-3">
+    <div class="route-title mt-2 mx-3" style="padding:25px";>
       <h1 class="text-center"><strong><%= @route.title %></strong></h1>
+      <%= link_to '<i class="fa-solid fa-pen-to-square"></i> Edit'.html_safe, edit_route_path(@route), class: "btn btn-outline-primary", style: "margin-left:225px;" %>
     </div>
 
     <%# Search field & destination display %>
