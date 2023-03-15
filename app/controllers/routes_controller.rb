@@ -16,18 +16,13 @@ class RoutesController < ApplicationController
 
     @markers = @route.destinations.geocoded.map do |destination|
       {
+        pos: @route.route_destinations.where(destination: destination).first.position,
         lat: destination.latitude,
         lng: destination.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker#{@route.route_destinations.where(destination: destination).first.position}")
       }
     end
 
-    # @markers = @route.route_destinations.geocoded.map do |route_destination|
-    #   {
-    #     lat: route_destination.destination.latitude,
-    #     lng: route_destination.destination.longitude
-    #   }
-    # end
   end
 
   def new
