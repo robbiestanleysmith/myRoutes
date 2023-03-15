@@ -19,7 +19,7 @@
             <%= link_to "Saved routes", myroutes_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <% #= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Account settings", "#", class: "dropdown-item" %>
 
@@ -37,12 +37,11 @@
   </div>
 </div>
 
- <script>
 
 
-  <script>
-      const smallGif = document.getElementById("small-gif")
-      setInterval(function() {
-        smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
-      }, 6000);
-  </script>
+<script>
+  const smallGif = document.getElementById("small-gif")
+  setInterval(function() {
+  smallGif.src = "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif"
+ }, 6000);
+</script>
