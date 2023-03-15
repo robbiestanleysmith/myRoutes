@@ -13,24 +13,23 @@ class RouteDestinationsController < ApplicationController
   #   @route_destination = RouteDestination.find(params[:id])
   # end
 
-  def new
-    @route_destination = RouteDestination.new
-  end
+  # def new
+  #   @route_destination = RouteDestination.new
+  # end
 
   def create
     @route_destination = RouteDestination.new(route_destination_params)
     @route_destination.user = current_user
-    raise
   end
 
-  def edit
-    @route_destination = RouteDestination.find(params[:id])
-  end
+  # def edit
+  #   @route_destination = RouteDestination.find(params[:id])
+  # end
 
-  def update
-    @route_destination = RouteDestination.find(params[:id])
-    @route_destination.update(route_destination_params)
-  end
+  # def update
+  #   @route_destination = RouteDestination.find(params[:id])
+  #   @route_destination.update(route_destination_params)
+  # end
 
   def move
     @route_destination = RouteDestination.find(params[:id])
