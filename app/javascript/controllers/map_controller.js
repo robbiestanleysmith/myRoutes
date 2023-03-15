@@ -16,9 +16,8 @@ export default class extends Controller {
 
     // 1. Convert markers
     const markersarray = this.markersValue;
-
-    console.log("Markers array");
-    console.log(markersarray);
+    // console.log("Markers array");
+    // console.log(markersarray);
 
     // Sort markers to be in correct order and return hash {1: {lat, lng}}
     const sortedmarkers = {}
@@ -29,53 +28,82 @@ export default class extends Controller {
     console.log(sortedmarkers)
 
 
-    // 2. Create map and add markers
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
-      zoom: 13,
-    });
+    // 3.1 If there is one destination, zoom onto that destination
+    if (Object.keys(sortedmarkers).length == 1) {
 
-    this.#addMarkersToMap(sortedmarkers);
-    this.#fitMapToMarkers(sortedmarkers);
+      const map = new mapboxgl.Map({
+        container: this.element,
+        style: "mapbox://styles/mapbox/streets-v10",
+        center: [sortedmarkers[1].lng, sortedmarkers[1].lat],
+        zoom: 13,
+        });
+
+      this.#addMarkersToMap(sortedmarkers);
+    }
+
+    // 3.2 If there are at least two destinations, fit coordinate bounds
+    else if (Object.keys(sortedmarkers).length >= 2) {
+
+      // Create new map
+      this.map = new mapboxgl.Map({
+        container: this.element,
+        style: "mapbox://styles/mapbox/streets-v10",
+        zoom: 6,
+      });
+
+      this.#addMarkersToMap(sortedmarkers);
+      this.#fitMapToMarkers(sortedmarkers);
 
 
-    // 3. Add route lines to map
-    let fetchQueryString =
-      "https://api.mapbox.com/directions/v5/mapbox/cycling/";
+      // Display route
+      let fetchQueryString =
+      "https://api.mapbox.com/directions/v5/mapbox/walking/";
 
-    let i = 1;
-    for (const key in sortedmarkers) {
+      let i = 1;
+      for (const key in sortedmarkers) {
 
-      if (i == Object.keys(sortedmarkers).length) {
-        fetchQueryString =
-          fetchQueryString +
-          sortedmarkers[key].lng +
-          "," +
-          sortedmarkers[key].lat +
-          `?exclude=ferry&geometries=geojson&access_token=${mapboxgl.accessToken}`;
-      } else {
-        fetchQueryString =
-          fetchQueryString + sortedmarkers[key].lng + "," + sortedmarkers[key].lat + ";";
-      }
-      i += 1;
-    };
-    console.log(fetchQueryString)
+        if (i == Object.keys(sortedmarkers).length) {
+          fetchQueryString =
+            fetchQueryString +
+            sortedmarkers[key].lng +
+            "," +
+            sortedmarkers[key].lat +
+            `?exclude=ferry&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+        } else {
+          fetchQueryString =
+            fetchQueryString + sortedmarkers[key].lng + "," + sortedmarkers[key].lat + ";";
+        }
+        i += 1;
+      };
 
-    this.#fetchRoute(fetchQueryString);
+      this.#fetchRoute(fetchQueryString);
+    }
+
+    // 3.3 If there is no destination, display Le Wagon London
+    else {
+      this.map = new mapboxgl.Map({
+        container: this.element,
+        center: [-0.07689440189122204, 51.53294032339022],
+        style: "mapbox://styles/mapbox/streets-v10",
+        zoom: 10,
+      });
+    }
+
   }
 
   #addMarkersToMap(sortedmarkers) {
-
     for (const key in sortedmarkers) {
-      console.log("I am here")
 
       const customMarker = document.createElement("div")
       customMarker.innerHTML = sortedmarkers[key].marker_html
 
+      console.log(customMarker.innerHTML)
+      console.log(sortedmarkers[key])
+
       new mapboxgl.Marker(customMarker)
         .setLngLat([sortedmarkers[key].lng, sortedmarkers[key].lat])
         .addTo(this.map);
+      console.log("Added marker")
     };
   }
 
