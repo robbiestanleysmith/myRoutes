@@ -33,7 +33,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
     @route.user = current_user
     if @route.save
-      redirect_to edit_route_path(@route)
+      redirect_to edit_route_path(@route), alert: "You created a new route. Add no more than 9 destinations."
     else
       render :new
     end
