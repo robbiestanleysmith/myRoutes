@@ -43,7 +43,6 @@ class DestinationsController < ApplicationController
       end
 
       RouteDestination.create(route: @route, destination: @destination, position: index)
-      # redirect_to edit_route_path(@route), status: :unprocessable_entity
       redirect_to edit_route_path(@route), status: :unprocessable_entity
     end
   end
