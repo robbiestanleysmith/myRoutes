@@ -11,7 +11,7 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("Connected Map JS");
+    console.log("Hello from MAP controller");
     mapboxgl.accessToken = this.apiKeyValue;
 
     // 1. Convert markers
@@ -24,8 +24,8 @@ export default class extends Controller {
     markersarray.forEach((marker) => {
       sortedmarkers[marker.pos] = {lat: marker.lat, lng: marker.lng, marker_html: marker.marker_html}
     })
-    console.log("Sorted markers")
-    console.log(sortedmarkers)
+    // console.log("Sorted markers")
+    // console.log(sortedmarkers)
 
 
     // 3.1 If there is one destination, zoom onto that destination
@@ -97,13 +97,13 @@ export default class extends Controller {
       const customMarker = document.createElement("div")
       customMarker.innerHTML = sortedmarkers[key].marker_html
 
-      console.log(customMarker.innerHTML)
-      console.log(sortedmarkers[key])
+      // console.log(customMarker.innerHTML)
+      // console.log(sortedmarkers[key])
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([sortedmarkers[key].lng, sortedmarkers[key].lat])
         .addTo(this.map);
-      console.log("Added marker")
+      // console.log("Added marker")
     };
   }
 
@@ -127,7 +127,7 @@ export default class extends Controller {
       .then((data) => {
         console.log(data)
         // this.#addingDistanceInfo()
-        this.#sendPatch(data)
+
         const route = data.routes[0].geometry.coordinates;
         const geojson = {
           type: "Feature",
@@ -154,6 +154,7 @@ export default class extends Controller {
             "line-opacity": 0.75,
           },
         });
+        this.#sendPatch(data)
       });
   }
 
@@ -170,22 +171,23 @@ export default class extends Controller {
   // }
 
   #sendPatch(data) {
-    console.log(this.routeIdValue)
-    console.log('RouteId again?')
+    // console.log(this.routeIdValue)
+    // console.log('RouteId again?')
     const form = new FormData();
-    console
+    // console
     const DistanceInMetres = data.routes[0].distance
     const TimeInSeconds = data.routes[0].duration
 
     const DistanceInKm = parseFloat((DistanceInMetres / 1000).toFixed(2))
+
     // const TimeInMinutes = parseFloat((TimeInSeconds / 60).toFixed(0))
     const TimeInMinutes = Math.round((TimeInSeconds / 60))
-    console.log(TimeInSeconds)
+    console.log("Time in minutes")
+    console.log(TimeInMinutes)
 
     form.append("route[distance]", DistanceInKm)
     form.append("route[time]", TimeInMinutes)
 
-    console.log("jake")
 
     // fetch(`/routes/${this.routeIdValue}`, {
     //   method: "PATCH",
