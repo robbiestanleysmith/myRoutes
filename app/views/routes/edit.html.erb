@@ -9,7 +9,7 @@
           <%# <%= button_tag as: :submit, class: "btn btn-outline-primary mx-2" do %>
             <%# <i class="fa-solid fa-arrow-left Back"></i> %>
           <%# <% end %>
-        <%# <% end %> 
+        <%# <% end %>
       </div>
       <div class="page-action-buttons">
         <%= link_to '<i class="fa-solid fa-floppy-disk"></i> Save'.html_safe, route_path(@route), class: "btn btn-outline-primary mx-2" %>
@@ -100,11 +100,10 @@
   <%# Right side of page %>
   <div class="destination-map-and-specs">
 
-    <div class="destination-specs">
-      <p><i class="fa-solid fa-person-walking"></i> &nbsp<strong> <%= @route.distance %></strong> km<br>
-         <i class="fa-solid fa-stopwatch"></i> &nbsp<strong><%= @route.time %></strong> mins  <br>
+    <div class="destination-specs" id="testnik" data-controller="niklas">
+      <p><i class="fa-solid fa-person-walking" ></i> &nbsp<strong> <span data-niklas-target="distance"> <%= @route.distance %></span></strong> km<br>
+         <i class="fa-solid fa-stopwatch"></i> &nbsp<strong><span data-niklas-target="time"><%= @route.time %></span></strong> mins  <br>
       </p>
-
     </div>
 
     <div id="map"
@@ -112,6 +111,7 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-route-id-value="<%= @route.id %>"
-    ></div>
-
+    >
+    </div>
+  </div>
 </div>

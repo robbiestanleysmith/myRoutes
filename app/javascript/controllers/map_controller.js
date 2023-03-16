@@ -4,6 +4,7 @@ import Rails from "rails-ujs";
 
 // Connects to data-controller="map"
 export default class extends Controller {
+
   static values = {
     apiKey: String,
     markers: Array,
@@ -14,18 +15,22 @@ export default class extends Controller {
     console.log("Hello from MAP controller");
     mapboxgl.accessToken = this.apiKeyValue;
 
+    // 0. Load map on page load
+    // const map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/mapbox/streets-v10",
+    //   center: [sortedmarkers[1].lng, sortedmarkers[1].lat],
+    //   zoom: 13,
+    //   });
+
     // 1. Convert markers
     const markersarray = this.markersValue;
-    // console.log("Markers array");
-    // console.log(markersarray);
 
     // Sort markers to be in correct order and return hash {1: {lat, lng}}
     const sortedmarkers = {}
     markersarray.forEach((marker) => {
       sortedmarkers[marker.pos] = {lat: marker.lat, lng: marker.lng, marker_html: marker.marker_html}
     })
-    // console.log("Sorted markers")
-    // console.log(sortedmarkers)
 
 
     // 3.1 If there is one destination, zoom onto that destination
@@ -125,7 +130,7 @@ export default class extends Controller {
     fetch(fetchQueryString)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         // this.#addingDistanceInfo()
 
         const route = data.routes[0].geometry.coordinates;
@@ -188,7 +193,6 @@ export default class extends Controller {
     form.append("route[distance]", DistanceInKm)
     form.append("route[time]", TimeInMinutes)
 
-
     // fetch(`/routes/${this.routeIdValue}`, {
     //   method: "PATCH",
     //   headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -202,5 +206,10 @@ export default class extends Controller {
       type: "PATCH",
       data: form
     })
+
+    console.log("I am here now")
+    document.querySelector('#testnik').niklas.add(TimeInMinutes, DistanceInKm)
+
   }
+
 }
