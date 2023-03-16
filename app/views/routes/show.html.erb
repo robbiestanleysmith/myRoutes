@@ -4,7 +4,7 @@
   <div class="route-content">
     <div class="page-action m-3">
       <div class="info-and-back">
-        <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, routes_path(), class: "btn btn-outline-primary" %>
+        <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, routes_path(), class: "btn btn-outline-primary" %>
       </div>
       <div class="page-action-buttons">
         <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>
@@ -12,7 +12,6 @@
         <%# <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
         <div data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size="" style="margin-left:5px">
           <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse", class: "btn btn-outline-primary fb-xfbml-parse-ignore", target: "_blank" do %>
-            <%# <i class="fa-brands fa-facebook"></i> Share
           <% end %>
         <%# </div> %>
         <%# <%= link_to '<i class="fas fa-share"></i> Share'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>

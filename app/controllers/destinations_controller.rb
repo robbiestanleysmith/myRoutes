@@ -40,6 +40,7 @@ class DestinationsController < ApplicationController
       end
 
       RouteDestination.create(route: @route, destination: @destination, position: index)
+      flash.notice = "Stop successfully added!"
       redirect_to edit_route_path(@route), status: :unprocessable_entity
     end
   end
@@ -56,6 +57,7 @@ class DestinationsController < ApplicationController
   def destroy
     @destination = Destination.find(params[:id])
     @destination.destroy
+    flash.notice = "Stop successfully deleted!"
     redirect_back(fallback_location: routes_path, status: :unprocessable_entity)
   end
 
