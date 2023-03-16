@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
+import GifLoopController from "./gif_loop_controller"
+application.register("gif-loop", GifLoopController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

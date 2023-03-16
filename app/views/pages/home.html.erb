@@ -5,8 +5,8 @@
       <div class="banner-content">
 
         <div class="home-title-container">
-          <div class="d-flex justify-content-center align-items-center">
-            <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , id: "gif" %>
+          <div class="d-flex justify-content-center align-items-center" data-controller="gif-loop">
+            <%= image_tag "https://res.cloudinary.com/dcuj8efm3/image/upload/v1678444548/map_animated_d4rahd.gif", height: 120 , data: {gif_loop_target: "gif"} %>
             <h1 id="home-title" style="font-weight: bold"> myRoutes </h1>
           </div>
           <%= link_to "Begin your journey", routes_path, class: "btn-byj btn btn-primary" %>
@@ -204,11 +204,3 @@
   </div>
 </div>
 </section>
-
-<%# asdf %>
-<script>
-  const gif = document.getElementById("gif");
-  setInterval(function(){
-    gif.src = "assets/map_animated.gif"
-  }, 6000);
-</script>
