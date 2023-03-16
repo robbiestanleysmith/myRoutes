@@ -4,15 +4,16 @@
   <div class="route-content">
     <div class="page-action m-3">
       <div class="info-and-back">
-        <%= simple_form_for @route do |f| %>
-          <%= f.input :title, as: :hidden %>
-          <%= button_tag as: :submit, class: "btn btn-outline-primary mx-2" do %>
-            <i class="fa-solid fa-arrow-left"></i>
-          <% end %>
-        <% end %>
+        <%# <%= simple_form_for @route do |f| %>
+          <%# <%= f.input :title, as: :hidden %>
+          <%# <%= button_tag as: :submit, class: "btn btn-outline-primary mx-2" do %>
+            <%# <i class="fa-solid fa-arrow-left Back"></i> %>
+          <%# <% end %>
+        <%# <% end %> 
       </div>
       <div class="page-action-buttons">
-        <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete the entire route?'}, class: "btn btn-outline-warning mx-2" %>
+        <%= link_to '<i class="fa-solid fa-floppy-disk"></i> Save'.html_safe, route_path(@route), class: "btn btn-outline-primary mx-2" %>
+        <%= link_to '<i class="fa-regular fa-trash-can"></i> Delete'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete the entire route?'}, class: "btn btn-outline-warning mx-2" %>
       </div>
     </div>
 

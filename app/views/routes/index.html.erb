@@ -17,9 +17,16 @@
             <%= route.city %>
           </div>
           <div class="card-route-actions">
-            <%= link_to 'Share', route_path(route), class: "btn btn-outline-primary mx-2"%>
             <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, route.google_url, target: "_blank", class: "btn btn-outline-primary mx-2"%>
-          </div>
+            <div class="input-group" style="width: auto;" data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
+
+              <div class="input-group-append" >
+                <button id="copy-button" class="btn btn-outline-primary" data-action="click->clipboard#copy"><i class="fa-solid fa-share-nodes"></i> Copy route link</button>
+                <input class="form-control invisible copy-input" data-clipboard-target="input" type="text" value="<%= route.google_url %>" readonly>
+              </div>
+            </div>
+
+         </div>
         </div>
 
         <div class="card-route-center px-3 py-4">
@@ -42,7 +49,7 @@
               <div class="text-description">
                 Your route title
               </div>
-              <div class="text-content mt-2">
+              <div class="text-content">
                 <h2><%= route.title %></h2>
               </div>
             </div>
