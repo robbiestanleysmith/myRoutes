@@ -1,6 +1,3 @@
-require "open-uri"
-require "JSON"
-
 class DestinationsController < ApplicationController
   def index
     @destinations = Destination.all
