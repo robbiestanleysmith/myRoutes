@@ -95,8 +95,10 @@
   <div class="destination-map-and-specs">
 
     <div class="destination-specs">
-      <p>Distance: <%= @route.distance %> km<br>
-      Time: <%= @route.time %> mins</p>
+      <p><i class="fa-solid fa-person-walking"></i> &nbsp<strong> <%= @route.distance %></strong> km<br>
+         <i class="fa-solid fa-stopwatch"></i> &nbsp<strong><%= @route.time %></strong> mins  <br>
+      </p>
+
     </div>
 
     <div id="map"

@@ -16,8 +16,8 @@ export default class extends Controller {
       onEnd: this.end.bind(this),
     });
 
-    console.log(this.element.dataset.count);
-    console.log(this.element.dataset.routeDestinationsCount);
+    // console.log(this.element.dataset.count);
+    // console.log(this.element.dataset.routeDestinationsCount);
   }
 
   end(event) {
@@ -25,13 +25,13 @@ export default class extends Controller {
 
     // * Route Destination ID
     let id = event.item.dataset.id;
-    console.log(id);
+    // console.log(id);
 
     // console.log(this.element.dataset.count);
 
     let data = new FormData();
-    console.log("Data")
-    console.log(data)
+    // console.log("Data")
+    // console.log(data)
 
     if (event.newIndex === 0) {
       data.append("position", 1);
@@ -45,8 +45,8 @@ export default class extends Controller {
 
     // * Route ID
     let routeId = this.element.dataset.routeId;
-    console.log("Route ID");
-    console.log(routeId);
+    // console.log("Route ID");
+    // console.log(routeId);
     console.log(this.data.get("url").replace(":id", id))
 
     Rails.ajax({
@@ -54,7 +54,7 @@ export default class extends Controller {
       type: "PATCH",
       data: data,
       success: function () {
-        console.log("Try to get a updated map.");
+        console.log("Page is reloading...");
         document.location.reload();
 
         // fetch(`/routes/${routeId}`)
