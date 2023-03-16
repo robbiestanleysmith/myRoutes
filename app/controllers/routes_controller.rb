@@ -62,14 +62,13 @@ class RoutesController < ApplicationController
 
   def update
     @route = Route.find(params[:id])
-
     @route.update(route_params)
+    redirect_to route_path(@route)
   end
 
   def move
     @route = Route.find(params[:id])
     @route.update(ajax_params)
-
   end
 
   def destroy
