@@ -4,10 +4,15 @@
   <div class="route-content">
     <div class="page-action m-3">
       <div class="info-and-back">
-        <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, route_path(@route), class: "btn btn-outline-primary" %>
+        <%= simple_form_for @route do |f| %>
+          <%= f.input :title, as: :hidden %>
+          <%= button_tag as: :submit, class: "btn btn-outline-primary mx-2" do %>
+            <i class="fa-solid fa-arrow-left"></i>
+          <% end %>
+        <% end %>
       </div>
       <div class="page-action-buttons">
-        <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-warning mx-2" %>
+        <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, route_path(@route), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete the entire route?'}, class: "btn btn-outline-warning mx-2" %>
       </div>
     </div>
 
@@ -70,7 +75,7 @@
 
             <div class="destination-text">
               <div class="destination-title">
-                <%= route_destination.destination.title %>  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(route_destination.destination), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+                <%= route_destination.destination.title %>  <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, destination_path(route_destination.destination), data: {turbo_method: :delete, turbo_confirm: 'Remove this stop from your route?'} %>
               </div>
               <% if route_destination.destination.title == "Custom location" %>
                 <div class="destination-address">
