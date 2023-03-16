@@ -7,13 +7,17 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("clipboard controller");
+    console.log("clipboard controller hellow");
   }
 
-  copy(event) { 
-    console.log(event)
-    this.inputTarget.select();
-    document.execCommand('copy');
+  copy(event) {
+    console.log("Just copied this:")
+    console.log(this.inputTarget.value)
+    // console.log(event)
+    // this.inputTarget.select();
+    navigator.clipboard.writeText(this.inputTarget.value);
+
+    // document.execCommand('copy');
     event.currentTarget.disabled = true;
     event.currentTarget.innerText = this.feedbackTextValue;
   }

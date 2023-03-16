@@ -11,7 +11,8 @@
 .page-action-buttons {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  // align-items: center;
+  width: 75%;
 
 }
 
@@ -29,6 +30,8 @@
   .page-action {
     display: flex;
     justify-content: space-between;
+    height: 38px;
+
     .route-title {
       p {
         font-size: 15px;
