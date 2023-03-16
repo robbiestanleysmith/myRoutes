@@ -74,6 +74,7 @@ class RoutesController < ApplicationController
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
+    flash.notice = "Route successfully deleted!"
     redirect_to routes_path
   end
 
