@@ -69,7 +69,7 @@ class RoutesController < ApplicationController
   def move
     @route = Route.find(params[:id])
     @route.update(ajax_params)
-    
+
   end
 
   def destroy
