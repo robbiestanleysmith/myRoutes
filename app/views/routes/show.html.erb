@@ -8,13 +8,19 @@
       </div>
       <div class="page-action-buttons">
         <%= link_to '<i class="fa-solid fa-map-location-dot"></i> Navigate'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
+        <%# <div id="fb-root"></div> %>
+        <%# <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="nYyyuyyT"></script>
         <div data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size="" style="margin-left:5px">
           <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse", class: "btn btn-outline-primary fb-xfbml-parse-ignore", target: "_blank" do %>
-            <i class="fa-solid fa-share-nodes"></i> Share
           <% end %>
+        <%# </div> %>
+        <%# <%= link_to '<i class="fas fa-share"></i> Share'.html_safe, @route.google_url, target: "_blank", class: "btn btn-outline-primary" %>
+        <div class="input-group" data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
+        <div class="input-group-append">
+          <button id="copy-button" class="btn btn-outline-primary ms-3" data-action="click->clipboard#copy">Copy route link</button>
+          <input class="form-control invisible copy-input" data-clipboard-target="input" type="text" value="<%= @route.google_url %>" readonly>
         </div>
+      </div>
       </div>
     </div>
 
